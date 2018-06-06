@@ -72,3 +72,14 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
 SELECT * FROM album;
 SELECT * FROM album WHERE album.release_year >= 1975 AND album.release_year <= 1990;
 SELECT * FROM album WHERE album.release_year IS NULL;
+
+-- Show all track titles from 'Super Funky Album'
+SELECT track.title FROM track WHERE track.album_id = 2;
+-- Same as above, but rename the column from title to Track_Title in output
+SELECT track.title AS Track_Title FROM track WHERE track.album_id = 2;
+
+-- Get album titles by Han Solo
+SELECT album.title FROM artist_album LEFT JOIN album ON album.id = artist_album.album_id WHERE artist_id = 3;
+
+-- Select the average year all albums were released
+SELECT AVG(release_year) FROM album;
