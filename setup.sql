@@ -1,3 +1,36 @@
+DROP TABLE album;
+DROP TABLE artist;
+DROP TABLE artist_album;
+DROP TABLE track;
+
+CREATE TABLE album (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    release_year INTEGER
+);
+
+CREATE TABLE artist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE track (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    album_id INTEGER,
+    FOREIGN KEY(album_id) REFERENCES album(id)
+);
+
+CREATE TABLE artist_album (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    album_id INTEGER,
+    artist_id INTEGER,
+    FOREIGN KEY(album_id) REFERENCES album(id),
+    FOREIGN KEY(artist_id) REFERENCES artist(id)
+);
+
+PRAGMA foreign_keys = ON;
+
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
 INSERT INTO album (title, release_year) VALUES ("Super Disco Album", 1978);
@@ -43,3 +76,7 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 2", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
+
+-- Queries
+-- album queries 
+SELECT * FROM album;
