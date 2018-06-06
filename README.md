@@ -1,37 +1,6 @@
 # SQL
 
-See [the Lambda page on Relational
-Databases](https://github.com/LambdaSchool/Relational-Databases) for more
-information. (Note that page is for PostgreSQL, but the SQL information is valid
-here.)
-
-## SQLite
-
-SQLite is a popular, simple SQL database.
-
-You can launch into a memory-only DB by running:
-
-```
-sqlite3
-```
-
-You can specify a persistent DB file with:
-
-```
-sqlite3 mydatabase.db
-```
-
-When you get to the prompt, you can type `.help` for commands.
-
-Some helpful ones:
-
-* `.mode column` turn on column output for `SELECT`.
-* `.header on` turn on column headers for `SELECT`.
-* `.read filename` execute the SQL in `filename`.
-* `.open dbname` re-open a memory-only DB to a persistent file.
-* `.quit` exit SQLite. (Note that if you're using a memory-only DB, all data is lost at this point.)
-
-## Create a Music Database
+Solution branch. See the `master` branch for the assignment.
 
 Make an albums table to hold album information:
 
@@ -52,7 +21,6 @@ CREATE TABLE artist (
 );
 ```
 
-
 ### Exercises, Day 1
 
 Before you begin, look at the queries in `setup.sql` to get a hint as to the
@@ -63,27 +31,28 @@ column names in the following tables. We'll use `setup.sql` later.
   * A title (of type `VARCHAR`, probably)
   * A reference to an `id` in table `album` (the album the track is on). This
     should be a _foreign key_.
+  ```sql
+  CREATE TABLE track (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title VARCHAR(128),
+      album_id INTEGER,
+      FOREIGN KEY(album_id) REFERENCES album(id)
+  );
+  ```
 
-```sql
-CREATE TABLE track (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title VARCHAR(128),
-    album_id INTEGER,
-    FOREIGN KEY(album_id) REFERENCES album(id)
-);
-``` * Create a table called `artist_album` to connect artists to albums. (Note that
+* Create a table called `artist_album` to connect artists to albums. (Note that
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
  
-```sql
-CREATE TABLE artist_albums (
-    artist_id INTEGER,
-    album_id INTEGER,
-    FOREIGN KEY(artist_id) REFERENCES artist(id),
-    FOREIGN KEY(album_id) REFERENCES album(id)
-);
-```
+  ```sql
+  CREATE TABLE artist_albums (
+      artist_id INTEGER,
+      album_id INTEGER,
+      FOREIGN KEY(artist_id) REFERENCES artist(id),
+      FOREIGN KEY(album_id) REFERENCES album(id)
+  );
+  ```
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
