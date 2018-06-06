@@ -69,12 +69,21 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
 
+-- Show all albums
 SELECT * FROM album;
+
+-- Show all albums made between 1975 and 1990
 SELECT * FROM album WHERE album.release_year >= 1975 AND album.release_year <= 1990;
+
+-- Show all albums whose names start with 'Super D'
+SELECT * from album WHERE album.title LIKE 'Super D%';
+
+-- Show all albums that have no release year
 SELECT * FROM album WHERE album.release_year IS NULL;
 
 -- Show all track titles from 'Super Funky Album'
 SELECT track.title FROM track WHERE track.album_id = 2;
+
 -- Same as above, but rename the column from title to Track_Title in output
 SELECT track.title AS Track_Title FROM track WHERE track.album_id = 2;
 
@@ -83,3 +92,12 @@ SELECT album.title FROM artist_album LEFT JOIN album ON album.id = artist_album.
 
 -- Select the average year all albums were released
 SELECT AVG(release_year) FROM album;
+
+-- Select the average year all albums by Leia and the Ewoks were released.
+SELECT AVG(album.release_year) FROM artist_album LEFT JOIN album ON album.id = artist_album.album_id WHERE artist_id = 2;
+
+-- Select the number of artists.
+SELECT COUNT(*) FROM artist;
+
+-- Select the number of tracks on 'Super Dubstep Album'
+SELECT COUNT(*) FROM track WHERE track.album_id = (SELECT id FROM album WHERE album.title = "Super Dubstep Album");
