@@ -25,8 +25,8 @@ CREATE TABLE room (
 );
 
 CREATE TABLE room_object (
-  room_id INT REFERENCES room(id);
-  object_id INT REFERENCES object(id);
+  room_id INT REFERENCES room(id),
+  object_id INT REFERENCES object(id)
 ); -- this is a JOIN table..full of FKs only
 
 INSERT INTO room (name, description) VALUES ("Foyer", "This is where it all begins!");
@@ -50,3 +50,5 @@ SELECT name, room_id FROM player;
 SELECT player.name AS "Playa!", room.name, description FROM player, room 
   WHERE player.room_id = room.id AND --this is the JOIN
   player.id = 1;
+
+

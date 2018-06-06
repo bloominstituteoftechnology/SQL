@@ -1,3 +1,30 @@
+PRAGMA foreign_keys = ON; -- this is for SQLite only
+
+DROP TABLE IF EXISTS album;
+DROP TABLE IF EXISTS artist;
+
+CREATE TABLE album (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    release_year INTEGER
+);
+
+CREATE TABLE artist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE track (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128) NOT NULL,
+    album_id INT REFERENCES album(id)
+);
+
+CREATE TABLE artist_album (
+    artist_id INT REFERENCES artist(id),
+    album_id INT REFERENCES album(id)
+);
+
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
 INSERT INTO album (title, release_year) VALUES ("Super Disco Album", 1978);
@@ -43,3 +70,11 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 2", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
+
+SELECT title FROM album;
+
+SELECT title FROM album WHERE release_year BETWEEN 1975 AND 1990;
+
+SELECT title FROM album WHERE title LIKE 'Super D%';
+
+SELECT title FROM album WHERE release_year is NULL;
