@@ -73,3 +73,8 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 2", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
+
+SELECT * FROM album;
+SELECT * FROM album WHERE release_year >= 1975 AND release_year < 1990;
+SELECT * FROM album WHERE title LIKE "Super D%";
+SELECT * FROM album WHERE release_year IS NULL;
