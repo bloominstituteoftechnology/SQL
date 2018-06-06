@@ -27,8 +27,8 @@ SELECT title AS Track_Title FROM track WHERE album_id = 2;
 .print ""
 
 .print "All album titles by Han Solo:"
-SELECT title FROM album, artist_album, artist
-  WHERE album_id = album.id AND artist_id = artist.id AND artist_id = 3;
+SELECT title FROM album, artist_album
+  WHERE album_id = album.id AND artist_id = 3;
 .print ""
 
 .print "Average year all albums released:"
@@ -36,8 +36,8 @@ SELECT AVG(release_year) AS "average" FROM album;
 .print ""
 
 .print "Average year all albums by Leia and the Ewoks released:"
-SELECT AVG(release_year) AS "average" FROM album, artist_album, artist
-  WHERE album_id = album.id AND artist_id = artist.id AND artist_id = 2;
+SELECT AVG(release_year) AS "average" FROM album, artist_album
+  WHERE album_id = album.id AND artist_id = 2;
 .print ""
 
 .print "Number of artists:"
@@ -46,3 +46,4 @@ SELECT COUNT(*) AS "count" FROM artist;
 
 .print "Number of tracks on Super Dubstep Album:"
 SELECT COUNT(*) AS "count" FROM track, album WHERE album_id = album.id AND album.id = 5;
+.print ""
