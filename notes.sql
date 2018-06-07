@@ -42,3 +42,6 @@ SELECT author.name FROM notes, author
 SELECT author.name, COUNT(notes.id) FROM notes, author
     WHERE notes.author_id = author.id
     GROUP BY author.id;
+
+-- DELETE FROM author where author.id > 3;
+-- probably delete the related notes before trying to delete the author of those notes
