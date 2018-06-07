@@ -3,13 +3,12 @@
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
 information. (Note that page is for PostgreSQL, but the SQL information is valid
-here.)
+here.) 
+
 
 ## SQLite
 
-SQLite is a popular, simple SQL database.
-
-You can launch into a memory-only DB by running:
+SQLite is a popular, simple SQL database. You can launch into a memory-only DB by running:
 
 ```
 sqlite3
@@ -37,7 +36,8 @@ SQLite](https://sqlitebrowser.org/), a GUI-based SQLite viewer and data
 manipulator that can also run SQL queries.
 
 
-## Create a Music Database
+
+## Assignment I: Create a Music Database
 
 Make an albums table to hold album information:
 
@@ -134,4 +134,3 @@ Write queries that:
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
-
