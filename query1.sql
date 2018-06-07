@@ -38,38 +38,38 @@ select * from album where release_year > 1975 and release_year < 1990;
 .print ""
 
 .print "albums whose name starts with Super D: "
-SELECT * FROM album WHERE title LIKE "Super D%";
+select * from album where title like "Super D%";
 .print ""
 
 .print "albums that have no release year: "
-SELECT * FROM album WHERE release_year IS NULL;
+select * from album where release_year is null;
 .print ""
 
 .print "all track titles from Super Funky Album: "
-SELECT title FROM track WHERE album_id = 2;
+select title from track where album_id = 2;
 .print ""
 
 .print "all track titles from Super Funky Album with Track_Title as column name: "
-SELECT title AS Track_Title FROM track WHERE album_id = 2;
+select title as Track_Title from track where album_id = 2;
 .print ""
 
 .print "album titles by Han Solo: "
-SELECT title FROM album, artist_album, artist
-  WHERE album_id = album.id AND artist_id = artist.id AND artist_id = 3;
+select title from album, artist_album, artist
+  where album_id = album.id and artist_id = artist.id and artist_id = 3;
 .print ""
 
 .print "Average year all albums released:"
-SELECT AVG(release_year) AS "average" FROM album;
+select avg(release_year) as "average" from album;
 .print ""
 
 .print "Average year all albums by Leia and the Ewoks released:"
-SELECT AVG(release_year) AS "average" FROM album, artist_album, artist
-  WHERE album_id = album.id AND artist_id = artist.id AND artist_id = 2;
+select avg(release_year) as "average" from album, artist_album, artist
+  where album_id = album.id and artist_id = artist.id and artist_id = 2;
 .print ""
 
 .print "# of artists:"
-SELECT COUNT(*) AS "count" FROM artist;
+select count(*) as "count" from artist;
 .print ""
 
 .print "# of tracks on Super Dubstep Album:"
-SELECT COUNT(*) AS "count" FROM track, album WHERE album_id = album.id AND album.id = 5;
+select count(*) as "count" from track, album where album_id = album.id and album.id = 5;
