@@ -41,13 +41,21 @@ SELECT * FROM album WHERE release_year >= 1975 AND release_year <= 1990;
 SELECT * FROM album WHERE release_year >= 1975 <= 1990; -- This worked???
 -- Show all albums whose names start with Super D.
 SELECT * FROM album WHERE title LIKE 'Super D%';
+--SELECT * FROM album WHERE title GLOB 'Super D*'; -- Leon
+
 -- Show all albums that have no release year.
 SELECT * FROM album WHERE release_year IS NULL;
-
 -- Show all track titles from Super Funky Album.
 SELECT track.title FROM album, track 
     WHERE track.album_id = album.id 
     AND album.title = "Super Funky Album";
+-- Leon sub-select
+-- SELECT *
+--   FROM track
+--   WHERE album_id IN (SELECT id
+--     FROM album
+--     WHERE title IS 'Super Funky Album');
+
 -- Same query as above, but rename the column from title to Track_Title in the output.
 SELECT track.title AS 'Track_Title' FROM album, track 
     WHERE track.album_id = album.id 

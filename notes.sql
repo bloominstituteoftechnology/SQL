@@ -7,8 +7,8 @@ CREATE TABLE note (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
     content VARCHAR(1024),
-    author_id INTEGER REFERENCES author(id)
-    -- created_at CURRENT_TIMESTAMP
+    author_id INTEGER REFERENCES author(id),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE author (
