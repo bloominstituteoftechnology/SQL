@@ -64,3 +64,4 @@ SELECT name, COUNT(*) AS "count" FROM note, author
 -- Delete authors from the author table.
 DELETE FROM author WHERE name = "Lando Calrissian";
 -- ON DELETE CASCADE is set on the author_id column in the note table
+-- Without this, "Error: FOREIGN KEY constraint failed" appears.
