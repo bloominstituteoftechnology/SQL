@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON DELETE CASCADE; -- SQLite ONLY!
+PRAGMA foreign_keys = ON; -- SQLite ONLY!
 
 .mode column
 .header on
