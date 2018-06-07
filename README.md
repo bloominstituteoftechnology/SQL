@@ -5,8 +5,6 @@ Databases](https://github.com/LambdaSchool/Relational-Databases) for more
 information. (Note that page is for PostgreSQL, but the SQL information is valid
 here.) 
 
-Note - Made a mistake and worked on Relational Database
-
 
 ## SQLite
 
