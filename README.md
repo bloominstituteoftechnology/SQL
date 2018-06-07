@@ -29,7 +29,13 @@ Some helpful ones:
 * `.header on` turn on column headers for `SELECT`.
 * `.read filename` execute the SQL in `filename`.
 * `.open dbname` re-open a memory-only DB to a persistent file.
-* `.quit` exit SQLite. (Note that if you're using a memory-only DB, all data is lost at this point.)
+* `.quit` exit SQLite. (Note that if you're using a memory-only DB, all
+  data is lost at this point.)
+
+Another potentially useful third-party tool is [DB Browser for
+SQLite](https://sqlitebrowser.org/), a GUI-based SQLite viewer and data
+manipulator that can also run SQL queries.
+
 
 ## Create a Music Database
 
