@@ -38,3 +38,6 @@ SELECT * FROM note, author
 SELECT COUNT(*), author.name FROM note, author
     WHERE note.author_id = author.id
     GROUP BY author.name;
+
+DELETE FROM note WHERE author_id IN (1);
+DELETE FROM author where author.name is 'Amanda';
