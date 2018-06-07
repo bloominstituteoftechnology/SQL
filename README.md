@@ -1,4 +1,4 @@
-# SQL
+# SQL.
 
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
@@ -74,7 +74,7 @@ column names in the following tables. We'll use `setup.sql` later.
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
- 
+
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
@@ -128,10 +128,9 @@ Write queries that:
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
-  
+
   * What happens when you try to delete an author with an existing note?
   * How can you prevent this?
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
-
