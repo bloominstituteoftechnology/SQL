@@ -30,7 +30,7 @@ select * from note, author where author_id = author.id;
 
 .print "author for a particular note by note ID"
 select name from note, author
-  where note.author_id = author.id AND note.id = 3;
+  where note.author_id = author.id AND note.id = 2;
 .print ""
 
 .print "names of all the authors along with the number of notes they each have"
