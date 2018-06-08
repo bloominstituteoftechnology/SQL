@@ -28,3 +28,14 @@ insert into note (title, content, author_id) values ('also testing', 'this is a 
 select * from note, author where author_id = author.id;
 .print ""
 
+.print "author for a particular note by note ID"
+select name from note, author
+  where note.author_id = author.id AND note.id = 3;
+.print ""
+
+.print "names of all the authors along with the number of notes they each have"
+select name, COUNT(*) as "count" from note, author
+  where note.author_id = author.id group by author_id;
+.print ""
+
+delete from author where name = "Dostoyevsky";
