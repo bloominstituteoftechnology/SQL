@@ -82,22 +82,32 @@ SELECT * from album WHERE album.title LIKE 'Super D%';
 SELECT * FROM album WHERE album.release_year IS NULL;
 
 -- Show all track titles from 'Super Funky Album'
-SELECT track.title FROM track WHERE track.album_id = 2;
+SELECT track.title FROM track, album 
+  WHERE track.album_id = album.id AND album.title IS 'Super Funky Album';
 
 -- Same as above, but rename the column from title to Track_Title in output
-SELECT track.title AS Track_Title FROM track WHERE track.album_id = 2;
+SELECT track.title AS Track_Title FROM track, album 
+  WHERE track.album_id = album.id AND album.title IS 'Super Funky Album';
 
 -- Get album titles by Han Solo
-SELECT album.title FROM artist_album LEFT JOIN album ON album.id = artist_album.album_id WHERE artist_id = 3;
+/* SELECT album.title FROM artist_album LEFT JOIN album */ 
+/*   ON album.id = artist_album.album_id WHERE artist_id = 3; */
+SELECT album.title FROM artist_album, album, artist 
+  WHERE album.id = artist_album.album_id 
+  AND artist.id = artist_album.artist_id
+  AND artist.name IS 'Han Solo';
 
 -- Select the average year all albums were released
 SELECT AVG(release_year) FROM album;
 
 -- Select the average year all albums by Leia and the Ewoks were released.
-SELECT AVG(album.release_year) FROM artist_album LEFT JOIN album ON album.id = artist_album.album_id WHERE artist_id = 2;
+SELECT AVG(album.release_year) FROM artist_album LEFT JOIN album 
+  ON album.id = artist_album.album_id WHERE artist_id = 2;
 
 -- Select the number of artists.
 SELECT COUNT(*) FROM artist;
 
 -- Select the number of tracks on 'Super Dubstep Album'
-SELECT COUNT(*) FROM track WHERE track.album_id = (SELECT id FROM album WHERE album.title = "Super Dubstep Album");
+SELECT COUNT(*) FROM track WHERE track.album_id = (
+  SELECT id FROM album WHERE album.title = "Super Dubstep Album"
+);
