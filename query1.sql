@@ -3,8 +3,8 @@ pragma foreign_keys = on; -- SQLite ONLY!
 .mode column
 .header on
 
-drop table album if exists album;
-drop table artist if exists artist;
+drop table if exists album;
+drop table if exists artist;
 
 create table album (
   id integer primary key AUTOINCREMENT,
