@@ -9,7 +9,7 @@
 /* * A note should have a foreign key pointing to an author in an author table. */
 
 /* * What columns are needed for the author table? */
-
+PRAGMA foreign_keys = ON;
 
 CREATE TABLE note (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,12 +54,16 @@ INSERT INTO note_author (note_id, author_id) VALUES (6, 3);
 
 
 /* * Select all notes by an author's name. */
-SELECT * FROM note, author WHERE note.author_id = author.id AND author.id = 1;
+SELECT * FROM note, author 
+WHERE note.author_id = author.id AND author.id = 1;
 
 /* * Select author for a particular note by note ID. */
-SELECT author.name, author.id FROM author, note WHERE note.author_id = author.id AND note.id = 2;
+SELECT author.name, author.id FROM author, note 
+WHERE note.author_id = author.id AND note.id = 2;
 
 /* * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.) */
+SELECT author.name, COUNT(note.id) FROM author, note 
+WHERE note.author_id = author.id GROUP BY author.name;
 
 /* * Delete authors from the author table. */
 /*   > Note that SQLite doesn't enforce foreign key constrains by default. You have */
