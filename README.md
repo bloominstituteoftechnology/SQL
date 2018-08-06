@@ -185,8 +185,14 @@ column names in the following tables. We'll use `setup.sql` later.
     Super Dubstep Track 5
 
   * Select all album titles by `Han Solo`.
-
+  
   * Select the average year all albums were released.
+
+     SELECT AVG(release_year) From album;
+     
+     AVG(release_year)
+     -----------------
+     1984.0  
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
 
