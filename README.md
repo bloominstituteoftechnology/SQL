@@ -81,6 +81,7 @@ column names in the following tables. We'll use `setup.sql` later.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
     `CREATE TABLE`.
+`done`
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
