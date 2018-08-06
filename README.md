@@ -167,7 +167,10 @@ column names in the following tables. We'll use `setup.sql` later.
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
 
-    SELECT AVG(release_year) FROM album WHERE id = 1 OR id = 2;
+    SELECT AVG(release_year) FROM album, artist_album, artist
+      WHERE artist_album.album_id = album.id 
+      AND artist_album.artist_id = artist.id 
+      AND artist.name = "Leia and the Ewoks";
 
     AVG(release_year)
     -----------------
