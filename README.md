@@ -69,7 +69,7 @@ column names in the following tables. We'll use `setup.sql` later.
   * A title (of type `VARCHAR`, probably)
   * A reference to an `id` in table `album` (the album the track is on). This
     should be a _foreign key_.
-
+`done`
 * Create a table called `artist_album` to connect artists to albums. (Note that
   an artist might have several albums and an album might be created by multiple
   artists.)
