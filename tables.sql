@@ -4,7 +4,7 @@ CREATE TABLE album (
     release_year INTEGER
 );
 
-CREATE TABLE artist_album (
+CREATE TABLE artist (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(128) NOT NULL
 );
@@ -16,6 +16,7 @@ CREATE TABLE track (
 );
 
 CREATE TABLE artist_album (
-    artist_id INTEGER REFERENCES artist(id),
-    album_id INTEGER REFERENCES album(id)
+    PRIMARY KEY (artist_id) INTEGER REFERENCES artist(id),
+    FOREIGN KEY (album_id) INTEGER REFERENCES album(id)
 );
+
