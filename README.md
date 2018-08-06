@@ -193,7 +193,6 @@ column names in the following tables. We'll use `setup.sql` later.
     COUNT(album.title)
     ------------
     5          
-    
 ### Exercises, Day 2
 
 Create a database for taking notes.
