@@ -122,6 +122,36 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+
+    SELECT title FROM track;
+
+    title                
+    ---------------------
+    Super Awesome Track 1
+    Super Awesome Track 2
+    Super Awesome Track 3
+    Super Awesome Track 4
+    Super Awesome Track 5
+    Super Funky Track 1  
+    Super Funky Track 2  
+    Super Funky Track 3  
+    Super Funky Track 4  
+    Super Disco Track 1  
+    Super Disco Track 2  
+    Super Disco Track 3  
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Hairband Track 
+    Super Dubstep Track 1
+    Super Dubstep Track 2
+    Super Dubstep Track 3
+    Super Dubstep Track 4
+    Super Dubstep Track 5
+
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
 
