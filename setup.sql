@@ -1,3 +1,10 @@
+CREATE TABLE album (
+    id INTEGER PRIMARY KEY,
+    title VARCHAR(128) NOT NULL,
+    release_year INTEGER
+);
+
+
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
 INSERT INTO album (title, release_year) VALUES ("Super Disco Album", 1978);
