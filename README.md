@@ -113,6 +113,13 @@ column names in the following tables. We'll use `setup.sql` later.
 
   * Show all albums that have no release year.
 
+    SELECT * FROM ALBUM WHERE release_year is null;
+
+    id          title              release_year
+    ---------------------------------------
+    2       Super Funky Album              
+    5       Super Dubstep Alb    
+
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
   * Same query as above, but rename the column from `title` to `Track_Title` in
