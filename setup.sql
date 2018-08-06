@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE album (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
@@ -12,7 +14,7 @@ CREATE TABLE artist (
 CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
-    album_id VARCHAR(128) REFERENCES album(title)
+    album_id INT REFERENCES album(id)
     -- album_id INTEGER
 );
 
