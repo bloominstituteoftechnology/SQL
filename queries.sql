@@ -32,3 +32,7 @@ select AVG(release_year) from album, artist_album, artist
 where artist_album.artist_id = artist.id and
 artist_album.album_id = album.id and
 artist.name = "Leia and the Ewoks"
+
+
+-- Select the number of artists.
+select count(*) from artist
