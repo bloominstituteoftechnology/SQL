@@ -145,7 +145,18 @@ column names in the following tables. We'll use `setup.sql` later.
     Super Funky Track 4
 
   * Select all album titles by `Han Solo`.
-  
+    
+    SELECT album.title, artist.name FROM album, artist_album, artist 
+      WHERE artist_album.album_id = album.id 
+      AND artist_album.artist_id = artist.id 
+      AND artist.name = "Han Solo";
+       
+    title              name      
+    -----------------  ----------
+    Super Disco Album  Han Solo  
+    Super Hairband Al  Han Solo    
+
+
   * Select the average year all albums were released.
 
      SELECT AVG(release_year) From album;
