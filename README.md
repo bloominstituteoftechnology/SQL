@@ -103,6 +103,14 @@ column names in the following tables. We'll use `setup.sql` later.
     4           Super Hairband Al  1984        
 
   * Show all albums whose names start with `Super D`.
+
+    SELECT * FROM album WHERE title LIKE '%Super D%';
+
+    id          title              release_year
+    ----------  -----------------  ------------
+    3           Super Disco Album  1978        
+    5           Super Dubstep Alb      
+
   * Show all albums that have no release year.
 
 * Write SQL `SELECT` queries that:
