@@ -1,26 +1,29 @@
+DROP TABLE IF EXISTS album;
 CREATE TABLE album (
     id INTEGER PRIMARY KEY,
     title VARCHAR(128) NOT NULL,
     release_year INTEGER
 );
 
+DROP TABLE IF EXISTS artist;
 CREATE TABLE artist (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(128) NOT NULL
 );
 
+DROP TABLE IF EXISTS track;
 CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
     album_id INTEGER NOT NULL -- "Foreign Key"
 );
 
+DROP TABLE IF EXISTS artist_album;
 CREATE TABLE artist_album (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   artist_id INTEGER NOT NULL, -- "Foreign Key"
   album_id INTEGER NOT NULL -- "Foreign Key"
 );
-
 
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
