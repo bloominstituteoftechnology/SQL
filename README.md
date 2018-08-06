@@ -135,3 +135,21 @@ Write queries that:
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
 
+SELECTS: 
+select * from album; 
+
+select * from album where release_year>=1975 and release_year <= 1990;
+
+ select * from album where title like 'Super D%';
+
+ select * from album where release_year is NULL;
+
+select track.title  from track, album
+    where track.album_id = album.id and album.title = "Super Funky Album";
+
+SELECT track.title AS Track_Title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album"; 
+
+select album.title from album, artist_album, artist
+where artist_album.album_id = album.id and
+artist_album.artist_id = artist.id and
+artist.name = "Han Solo";
