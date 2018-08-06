@@ -85,25 +85,33 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+  `SELECT * FROM album;`
   * Show all albums made between 1975 and 1990.
+  `SELECT album.title FROM album WHERE 1974 < release_year < 1991;`
   * Show all albums whose names start with `Super D`.
+  `SELECT * FROM album WHERE album.title LIKE "Super D%";`
   * Show all albums that have no release year.
+  `SELECT album.title FROM album WHERE album.release_year is NULL;`
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+  `SELECT track.title FROM track WHERE track.album_id is 2;`
+  
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
-
+`Help`
   * Select all album titles by `Han Solo`.
-
+    `Help``SELECT album_id FROM artist_album WHERE artist_id = 3;`
+  
   * Select the average year all albums were released.
-
+    `SELECT AVG(release_year) from album;`
+  
   * Select the average year all albums by `Leia and the Ewoks` were released.
-
+    `Help`
   * Select the number of artists.
-
+    `SELECT Count(*) FROM artist;`
   * Select the number of tracks on `Super Dubstep Album`.
-
+    `SELECT Count(*) FROM track WHERE track.album_id = 5;`
 ### Exercises, Day 2
 
 Create a database for taking notes.
