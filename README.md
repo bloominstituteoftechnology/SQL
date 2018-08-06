@@ -70,10 +70,12 @@ column names in the following tables. We'll use `setup.sql` later.
   * A reference to an `id` in table `album` (the album the track is on). This
     should be a _foreign key_.
 `done`
+
 * Create a table called `artist_album` to connect artists to albums. (Note that
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
+`done`
  
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
