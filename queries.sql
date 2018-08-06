@@ -18,3 +18,11 @@ select track.title  from track, album
 select track.title as "Track Title" from track, album
     where track.album_id = album.id and album.title = "Super Funky Album";
 
+-- Select all album titles by Han Solo
+select album.title from album, artist_album, artist
+where artist_album.album_id = album.id and
+artist_album.artist_id = artist.id and
+artist.name = "Han Solo"
+
+-- Select the average year all albums were released.
+select AVG(release_year) from album
