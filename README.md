@@ -186,11 +186,14 @@ column names in the following tables. We'll use `setup.sql` later.
 
   * Select the number of tracks on `Super Dubstep Album`.
 
-    SELECT COUNT(title) FROM track WHERE album_id = 5;
+    SELECT COUNT(album.title) FROM track, album 
+    WHERE album.title = "Super Dubstep Album" 
+    AND track.album_id = album.id;
 
-    COUNT(title)
+    COUNT(album.title)
     ------------
     5          
+    
 ### Exercises, Day 2
 
 Create a database for taking notes.
