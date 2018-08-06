@@ -206,6 +206,11 @@ column names in the following tables. We'll use `setup.sql` later.
 
   * Select the number of tracks on `Super Dubstep Album`.
 
+    SELECT COUNT(title) FROM track WHERE album_id = 5;
+    
+    COUNT(title)
+    ------------
+    5          
 ### Exercises, Day 2
 
 Create a database for taking notes.
