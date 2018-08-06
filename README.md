@@ -123,34 +123,14 @@ column names in the following tables. We'll use `setup.sql` later.
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
 
-    SELECT title FROM track;
+    SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
 
-    title                
-    ---------------------
-    Super Awesome Track 1
-    Super Awesome Track 2
-    Super Awesome Track 3
-    Super Awesome Track 4
-    Super Awesome Track 5
-    Super Funky Track 1  
-    Super Funky Track 2  
-    Super Funky Track 3  
-    Super Funky Track 4  
-    Super Disco Track 1  
-    Super Disco Track 2  
-    Super Disco Track 3  
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Hairband Track 
-    Super Dubstep Track 1
-    Super Dubstep Track 2
-    Super Dubstep Track 3
-    Super Dubstep Track 4
-    Super Dubstep Track 5
+    title              
+    -------------------
+    Super Funky Track 1
+    Super Funky Track 2
+    Super Funky Track 3
+    Super Funky Track 4
 
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
@@ -201,7 +181,7 @@ column names in the following tables. We'll use `setup.sql` later.
     AVG(release_year)
     -----------------
     1990.0    
-    
+
   * Select the number of artists.
 
     SELECT COUNT(name) FROM artist;
