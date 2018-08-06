@@ -1,0 +1,30 @@
+sqlite> select * from album;
+1|Super Awesome Album|1990
+2|Super Funky Album|
+3|Super Disco Album|1978
+4|Super Hairband Album|1984
+5|Super Dubstep Album|
+
+
+sqlite> select * from album where 1975 <= release_year <= 1990;
+1|Super Awesome Album|1990
+3|Super Disco Album|1978
+4|Super Hairband Album|1984
+
+
+sqlite> select * from album where title like 'Super D%';
+3|Super Disco Album|1978
+5|Super Dubstep Album|
+
+
+sqlite> select * from album where release_year is null;
+2|Super Funky Album|
+5|Super Dubstep Album|
+
+sqlite> select * from track where album_id = (select id from album where title = "Super Funky Album");
+title                album_id    id        
+-------------------  ----------  ----------
+Super Funky Track 1  2           6         
+Super Funky Track 2  2           7         
+Super Funky Track 3  2           8         
+Super Funky Track 4  2           9 

@@ -1,0 +1,11 @@
+CREATE TABLE artist_album (
+	artist_id INT REFERENCES artist(id),
+	album_id INT REFERENCES album(id)
+);
+
+
+CREATE TABLE track (
+	title VARCHAR(128) NOT NULL,
+	album_id INT REFERENCES album(id),
+	id INTEGER PRIMARY KEY AUTOINCREMENT
+);
