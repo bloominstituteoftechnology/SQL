@@ -1,24 +1,40 @@
-CREATE TABLE album (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title VARCHAR(128) NOT NULL,
-    release_year INTEGER
-);
+.mode columm
+.header on
+.print ""
 
-CREATE TABLE artist_album (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name VARCHAR(128) NOT NULL
-);
+.print "Show all albums:"
+SELECT * FROM album;
+.print ""
 
-CREATE TABLE track (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title VARCHAR(128) NOT NULL,
-    album_id INTEGER REFERENCES album(id)
-);
+.print "Show all albums made between 1975 and 1990:"
+SELECT * FROM album WHERE release_year >= 1975 and release_year <= 1990;
+.print ""
 
-CREATE TABLE artist_album (
-    artist_id INTEGER REFERENCES artist(id),
-    album_id INTEGER REFERENCES album(id)
-);
+.print "Show all albums whose name starts with Super D:"
+SELECT * FROM album WHERE title LIKE "Super D%";
+.print ""
+
+.print "Show all albums that have no release year:"
+SELECT * FROM album WHERE release_year is NULL;
+.print ""
+
+.print "Show all track titles from `Super Funky Album:"
+SELECT track.title from track, album 
+WHERE track.album_id = album_id and album_title = "Super Funky Album";
+.print ""
+
+.print "Show all track titles from `Super Funky Album:"
+SELECT track.title as "Track Title" from track, album 
+WHERE track.album_id = album_id and album_title = "Super Funky Album";
+.print ""
+
+.print "Show all the album titles by Han Solo:"
+SELECT title FROM album, artist_album
+WHERE album_id = album.id AND artist_id = 3;
+.print ""
+
+
+
 
 
 
