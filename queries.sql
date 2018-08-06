@@ -4,7 +4,8 @@ select * from album;
 -- Show all albums made between 1975 and 1990.
 select * from album where release_year>=1975 and release_year <= 1990
 
-
+-- Show all albums whose names start with Super D
+SELECT * FROM album WHERE title LIKE "Super D%";
 
 -- Show all albums that have no release year.
 select * from album where release_year is null
