@@ -15,6 +15,12 @@ CREATE TABLE track (
     album_id INTEGER NOT NULL -- "Foreign Key"
 );
 
+CREATE TABLE artist_album (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist_id INTEGER NOT NULL, -- "Foreign Key"
+  album_id INTEGER NOT NULL -- "Foreign Key"
+);
+
 
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
