@@ -26,3 +26,9 @@ artist.name = "Han Solo"
 
 -- Select the average year all albums were released.
 select AVG(release_year) from album
+
+-- Select the average year all albums by Leia and the Ewoks were released
+select AVG(release_year) from album, artist_album, artist
+where artist_album.artist_id = artist.id and
+artist_album.album_id = album.id and
+artist.name = "Leia and the Ewoks"
