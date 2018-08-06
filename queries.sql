@@ -36,3 +36,8 @@ artist.name = "Leia and the Ewoks"
 
 -- Select the number of artists.
 select count(*) from artist
+
+-- Select the number of tracks on Super Dubstep Album
+SELECT COUNT(*) FROM track, album
+    WHERE track.album_id = album.id AND
+    album.title = "Super Dubstep Album";
