@@ -20,19 +20,33 @@ SELECT * FROM album WHERE release_year is NULL;
 
 .print "Show all track titles from `Super Funky Album:"
 SELECT track.title from track, album 
-WHERE track.album_id = album_id and album_title = "Super Funky Album";
+    WHERE track.album_id = album_id and album_title = "Super Funky Album";
 .print ""
 
 .print "Show all track titles from `Super Funky Album:"
 SELECT track.title as "Track Title" from track, album 
-WHERE track.album_id = album_id and album_title = "Super Funky Album";
+    WHERE track.album_id = album_id and album_title = "Super Funky Album";
 .print ""
 
 .print "Show all the album titles by Han Solo:"
 SELECT title FROM album, artist_album
-WHERE album_id = album.id AND artist_id = 3;
+    WHERE album_id = album.id AND artist_id = 3;
 .print ""
 
+.print "Average year all albums released:"
+SELECT AVG(release_year) AS "average" FROM album;
+.print ""
+
+.print "Average year all albums by Leia and Ewoks released:"
+SELECT AVG(release_year) AS "average" FROM album, artist_album
+    WHERE album_id = album.id AND artist_id = 2;
+
+.print "Number of artists:"
+SELECT COUNT(*) AS "count" FROM artist;
+.print ""
+
+.print "Number of track on Super Dubstep Album:"
+SELECT COUNT(*) AS "count" FROM track, WHERE album_id = album.id AND album_id = 5;
 
 
 
