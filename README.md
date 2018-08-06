@@ -84,7 +84,7 @@ column names in the following tables. We'll use `setup.sql` later.
   * Show all albums.
   
     SELECT * FROM album;
-    
+
     id      title                release_year
     -----------------------------------------
     1       Super Awesome Album  1990        
@@ -94,6 +94,14 @@ column names in the following tables. We'll use `setup.sql` later.
     5       Super Dubstep Album       
 
   * Show all albums made between 1975 and 1990.
+
+    SELECT * FROM album WHERE release_year > 1975 AND release_year < 1990;
+
+    id          title              release_year
+    ----------  -----------------  ------------
+    3           Super Disco Album  1978        
+    4           Super Hairband Al  1984        
+
   * Show all albums whose names start with `Super D`.
   * Show all albums that have no release year.
 
