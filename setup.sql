@@ -4,6 +4,11 @@ CREATE TABLE album (
     release_year INTEGER
 );
 
+CREATE TABLE artist (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(128) NOT NULL
+);
+
 
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
