@@ -82,10 +82,17 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
-  * Show all albums made between 1975 and 1990.
-  * Show all albums whose names start with `Super D`.
-  * Show all albums that have no release year.
+  ** SELECT * FROM album;
 
+  * Show all albums made between 1975 and 1990.
+  ** SELECT * FROM album where release_year >= 1975 and release_year <= 1990;
+
+  * Show all albums whose names start with `Super D`.
+  ** SELECT * FROM album where title LIKE "SUPER D%";
+
+  * Show all albums that have no release year.
+  ** SELECT * from album where release_year is null;
+  
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
   * Same query as above, but rename the column from `title` to `Track_Title` in
