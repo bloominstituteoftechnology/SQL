@@ -48,17 +48,4 @@ INSERT INTO track (tracktitle, trackalbum) VALUES ("Super Dubstep Track 5", 5);
 
 -- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-SELECT * FROM album;
-
-SELECT * FROM album 
-WHERE release_year <= 1990 AND release_year >= 1975;
-
 SELECT * FROM album
-WHERE title LIKE 'super D%';
-
-SELECT * FROM album 
-WHERE release_year IS NULL;
-
-SELECT * FROM track
-WHERE trackalbum LIKE 'Super Funky Album%';
-
