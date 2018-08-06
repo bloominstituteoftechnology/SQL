@@ -196,6 +196,12 @@ column names in the following tables. We'll use `setup.sql` later.
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
 
+    SELECT AVG(release_year) FROM album WHERE id = 1 OR id = 2;
+
+    AVG(release_year)
+    -----------------
+    1990.0    
+    
   * Select the number of artists.
 
     SELECT COUNT(name) FROM artist;
@@ -207,7 +213,7 @@ column names in the following tables. We'll use `setup.sql` later.
   * Select the number of tracks on `Super Dubstep Album`.
 
     SELECT COUNT(title) FROM track WHERE album_id = 5;
-    
+
     COUNT(title)
     ------------
     5          
