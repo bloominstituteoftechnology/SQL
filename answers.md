@@ -175,7 +175,7 @@ CREATE TABLE author (
 
 #### Enable Foreign Key Constrains
 ```sql
-    `PRAGMA foreign_keys = ON;`
+    PRAGMA foreign_keys = ON;
 ```
 
 ```sql
