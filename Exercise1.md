@@ -10,15 +10,15 @@ create table artist_album (
     FOREIGN KEY(album_id) REFERENCES track(album_id)
 );
 
-
+<!-- 
 create table album (
     title varchar(128),
     release_year Integer
-);
+); -->
 
-create table artist (
+<!-- create table artist (
     name varchar(128)
-);
+); -->
 
 
 
@@ -37,10 +37,8 @@ select title as Han_Solo_Tracks from track where album_id is (select album_id fr
 
 select avg(release_year) AS Average_Release_Year from album;
 
-select AVG(release_year) from album,artist_album, artist where artist_album.artist_id = artist_id and artist_album.album_id = album_id AND artist.name = "Leia and the Ewoks";
+select avg(release_year) from album,artist_album, artist where artist_album.artist_id = artist_id and artist_album.album_id = album_id AND artist.name = "Leia and the Ewoks";
 
 select count(name) as NUMBER_OF_ARTISTS from artist;
 
 select count(title) as Number_Of_Tracks_On_Super_Dubstep_Album from track where album_id is(select album_id from album where title is'Super Dubstep Album');
-
-SELECT AVG(release_year) FROM album,artist_album, artist WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = "Leia and the Ewoks";
