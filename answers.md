@@ -167,3 +167,7 @@ CREATE TABLE author (
 ```
 
 ### Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+```sql
+    SELECT COUNT(note.id), author.name FROM note LEFT JOIN author ON note.author_id = author.id GROUP BY author.name;
+```
+
