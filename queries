@@ -21,10 +21,51 @@ sqlite> select * from album where release_year is null;
 2|Super Funky Album|
 5|Super Dubstep Album|
 
-sqlite> select * from track where album_id = (select id from album where title = "Super Funky Album");
-title                album_id    id        
--------------------  ----------  ----------
-Super Funky Track 1  2           6         
-Super Funky Track 2  2           7         
-Super Funky Track 3  2           8         
-Super Funky Track 4  2           9 
+
+sqlite> select title from track where album_id = (select id from album where title = "Super Funky Album");
+title              
+-------------------
+Super Funky Track 1
+Super Funky Track 2
+Super Funky Track 3
+Super Funky Track 4
+
+
+sqlite> select title AS 'Track_Title' from track where album_id = (select id from album where title = "Super Funky Album");
+Track_Title        
+-------------------
+Super Funky Track 1
+Super Funky Track 2
+Super Funky Track 3
+Super Funky Track 4
+
+
+sqlite> select title from album where id in (select album_id from artist_album where artist_id = (select id from artist where name = "Han Solo"));
+title            
+-----------------
+Super Disco Album
+Super Hairband Al
+
+
+sqlite> select AVG(release_year) from album where release_year IS NOT NULL;
+AVG(release_year)
+-----------------
+1984.0 
+
+
+sqlite> select AVG(release_year) from (select release_year from album where id in (select album_id from artist_album where artist_id = (select id from artist where name = "Leia and the Ewoks")));
+AVG(release_year)
+-----------------
+1990.0 
+
+
+sqlite> select count(id) from artist;
+count(id) 
+----------
+3 
+
+
+sqlite> select count(title) from track where album_id = (select id from album where title = "Super Dubstep Album");
+count(title)
+------------
+5 
