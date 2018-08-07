@@ -43,3 +43,18 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 2", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
+
+select * from album;
+select * from album where release_year >= 1975 and release_year <= 1990;
+select * from album where title like 'Super D%';
+select * from album where release_year is null;
+
+select * from track where album_id = 2;
+select album_id, title as "Track_Title" from track where album_id =2;
+select artist_album.artist_id,artist_album.album_id,artist.name,album.title from artist_album,artist,album where artist_album.artist_id is artist.id and artist_album.album_id is album.id and artist.name is 'Han Solo';
+select avg(album.release_year) from album;
+select artist_album.artist_id,artist.name, avg(album.release_year) as 'average release year' from artist_album,artist,album where artist_album.artist_id is artist.id and artist_album.album_id is album.id and artist.name is 'Leia and the Ewoks';
+select Count(*) as 'number of artists' from artist;
+select Count(*) from track where title like 'Super Dubstep%';
+
+
