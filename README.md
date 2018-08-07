@@ -80,9 +80,6 @@ CREATE TABLE artist_album (
 );
 ```
 
-
-  * Select all album titles by `Han Solo`.
-
 ### Exercises, Day 1
 
 Before you begin, look at the queries in `setup.sql` to get a hint as to the
@@ -178,23 +175,59 @@ Create a database for taking notes.
 
 * What are the columns that a note table needs?
 
-* If you have a timestamp field, how do you auto-populate it with the date?
+```sql
+
+```
+
+* If you have a timestamp field, how do you auto-populate it with the date? 
+
+```sql
+
+```
 
 * A note should have a foreign key pointing to an author in an author table.
 
+```sql
+
+```
+
 * What columns are needed for the author table?
+
+```sql
+
+```
 
 Write queries that:
 
 * Insert authors to the author table.
 
+```sql
+
+```
+
 * Insert notes to the note table.
+
+```sql
+
+```
 
 * Select all notes by an author's name.
 
+```sql
+
+```
+
 * Select author for a particular note by note ID.
 
+```sql
+
+```
+
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+
+```sql
+
+```
 
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
