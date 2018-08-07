@@ -1,0 +1,8 @@
+CREATE TABLE notes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author_id INTEGER REFERENCES authors(id),
+    title VARCHAR(128),
+    content TEXT,
+    created_on DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+

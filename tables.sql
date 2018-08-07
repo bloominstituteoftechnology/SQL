@@ -12,11 +12,14 @@ CREATE TABLE artist (
 CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
-    FOREIGN KEY (album_id) INTEGER REFERENCES album(id)
+    album_id  INTEGER, --foreign key
+    FOREIGN KEY (album_id) REFERENCES album(id)
 );
 
 CREATE TABLE artist_album (
-    FOREIGN KEY (artist_id) INTEGER REFERENCES artist(id),
-    FOREIGN KEY (album_id) INTEGER REFERENCES album(id)
+    artist_id INTEGER,
+    album_id INTEGER,
+    FOREIGN KEY (artist_id) REFERENCES artist(id),
+    FOREIGN KEY(album_id) REFERENCES album(id)
 );
 
