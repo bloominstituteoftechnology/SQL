@@ -25,7 +25,7 @@ CREATE TABLE artist_album (
     title VARCHAR(256),
     artist_id INTEGER,
     album_id INTEGER,
-    FOREIGN KEY(artist_id) REFERENCES artist(id),
-    FOREIGN KEY(album_id) REFERENCES album(id)
+    FOREIGN KEY(artist_id) REFERENCES artist(name),
+    FOREIGN KEY(album_id) REFERENCES album(name)
 );
 
