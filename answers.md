@@ -1,6 +1,6 @@
 # Table Creation
 
-# Enable Foreign Keys
+#### Enable Foreign Keys
 PRAGMA foreign_keys = ON;
 
 #### Album
@@ -22,6 +22,7 @@ CREATE TABLE artist (
 ```
 
 #### Track
+
 One to many if foreign key is set up as below
 
 ```sql
@@ -34,7 +35,8 @@ CREATE TABLE track (
 ```
 
 #### Artist Album
-- Many to many relationship if foreign keys are set up as below
+
+Many to many relationship if foreign keys are set up as below
 
 ```sql
 CREATE TABLE artist_album (
