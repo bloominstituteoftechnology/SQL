@@ -154,3 +154,16 @@ CREATE TABLE author (
     INSERT INTO note (title, content, author_id) VALUES ("Title 4", "Text 4", 4);
     INSERT INTO note (title, content, author_id) VALUES ("Title 5", "Text 5", 5);
 ```
+
+#### Select notes by an author's name.
+
+```sql
+    SELECT note.title, note.content, author.name FROM note, author WHERE note.author_id = author.id AND author.name = "Fred";
+```
+
+#### Select author for a particular note by note ID
+```sql
+    SELECT author.name, note.title, note.content FROM note, author WHERE note.author_id = 3 AND author.id = 3;
+```
+
+### Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
