@@ -1,4 +1,6 @@
-# Table Creation
+# Day 1
+
+### Table Creation
 
 #### Enable Foreign Keys
 ```sql
@@ -107,4 +109,48 @@ AND album.title = "Super Dubstep Album";
 ```sql
 SELECT Count(track.id) FROM track, album WHERE track.album_id = album.id
 AND album.title = "Super Dubstep Album";
+```
+# Day 2
+
+#### Note
+
+```sql
+CREATE TABLE note (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title VARCHAR(128),
+    content VARCHAR(128),
+    author_id INTEGER REFERENCES author(id),
+    created_at TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### Author
+
+```sql
+CREATE TABLE author (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR(128),
+    created_at TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### Insert authors to author table.
+
+```sql
+    INSERT INTO author (name) VALUES ("Fred");
+    INSERT INTO author (name) VALUES ("Ben");
+    INSERT INTO author (name) VALUES ("George");
+    INSERT INTO author (name) VALUES ("Abraham");
+    INSERT INTO author (name) VALUES ("Thomas");
+```
+#### Insert notes to the note table.
+
+```sql
+    INSERT INTO note (title, content, author_id) VALUES ("Title 1", "Text 1", 1);
+    INSERT INTO note (title, content, author_id) VALUES ("Title 2", "Text 2", 2);
+    INSERT INTO note (title, content, author_id) VALUES ("Title 3", "Text 3", 3);
+    INSERT INTO note (title, content, author_id) VALUES ("Title 4", "Text 4", 4);
+    INSERT INTO note (title, content, author_id) VALUES ("Title 5", "Text 5", 5);
 ```
