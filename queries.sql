@@ -10,13 +10,13 @@ SELECT title FROM track WHERE album_id = 2;
 
 SELECT title FROM track AS "Track_Title" WHERE album_id = 2;
 
-SELECT * FROM album.title WHERE artist = 'Han Solo';
+SELECT album.title FROM album WHERE artist.name is 'Han Solo';
 
-SELECT AVG FROM release_year;
+SELECT AVG(release_year) FROM album;
 
-SELECT AVG FROM release_year WHERE artist = 'Leia and the Ewoks';
+SELECT AVG(release_year) FROM album WHERE artist = 'Leia and the Ewoks';
 
-SELECT COUNT FROM artist;
+SELECT COUNT(*) FROM artist;
 
-SELECT COUNT FROM tracks WHERE album.title = 'Super Dubstep Album';
+SELECT COUNT(*) FROM track, album WHERE album_id = 5 AND album_id = album.id;
 
