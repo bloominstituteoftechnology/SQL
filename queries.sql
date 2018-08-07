@@ -1,14 +1,14 @@
 SELECT * FROM album;
 
-SELECT title FROM album WHERE release_year BETWEEN 1975 AND 1990;
+SELECT * FROM album WHERE album.release_year BETWEEN 1975 AND 1990;
 
-SELECT title FROM album WHERE title LIKE 'Super%D';
+SELECT * FROM album WHERE album.title LIKE 'Super D%';
 
-SELECT title FROM album WHERE release_year = NULL;
+SELECT title FROM album WHERE album.release_year is NULL;
 
-SELECT * FROM album WHERE track IN 'Super Funky Album';
+SELECT title FROM track WHERE album_id = 2;
 
-SELECT * FROM album WHERE Track_Title IN 'Super Funky Album';
+SELECT title FROM track AS "Track_Title" WHERE album_id = 2;
 
 SELECT * FROM album.title WHERE artist = 'Han Solo';
 
