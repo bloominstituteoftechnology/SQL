@@ -46,7 +46,7 @@ INSERT INTO track (tracktitle, trackalbum) VALUES ("Super Dubstep Track 5", 5);
 
 
 
--- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 SELECT * FROM album;
 
@@ -60,5 +60,27 @@ SELECT * FROM album
 WHERE release_year IS NULL;
 
 SELECT * FROM track
-WHERE trackalbum LIKE 'Super Funky Album%';
+WHERE trackalbum IS 2;
+
+SELECT * FROM artist
+WHERE 
+
+SELECT album.title FROM album, artist_album, artist
+WHERE artist_album.album_id = album.id AND
+artist_album.artist_id = artist.id AND
+artist.name = "Han Solo";
+
+SELECT AVG(release_year) FROM album;
+
+SELECT AVG(release_year) FROM album, artist_album, artist
+WHERE artist_album.artist_id = artist.id AND
+artist_album.album_id = album.id AND 
+artist.name = "Leia and the Ewoks";
+
+SELECT count(*) from artist;
+
+SELECT COUNT(*) FROM track, album
+WHERE track.trackalbum = album.id AND
+album.title = "Super Dubstep Album";
+
 
