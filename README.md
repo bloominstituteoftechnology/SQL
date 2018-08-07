@@ -106,12 +106,16 @@ column names in the following tables. We'll use `setup.sql` later.
 Create a database for taking notes.
 
 * What are the columns that a note table needs?
+  id, title, content, author id (foreign key), timestamp
 
 * If you have a timestamp field, how do you auto-populate it with the date?
+  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
 * A note should have a foreign key pointing to an author in an author table.
+  author_id INT REFERENCES author(id),
 
 * What columns are needed for the author table?
+  id, author's name, timestamp
 
 Write queries that:
 
