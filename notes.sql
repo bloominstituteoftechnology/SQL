@@ -14,4 +14,18 @@ CREATE TABLE note (
 );
 
 
+INSERT INTO author (name) VALUES ('Devon');
+INSERT INTO author (name) VALUES ('Marjoerie');
+INSERT INTO author (name) VALUES ('Ponzi');
+INSERT INTO author (name) VALUES ('Taylor');
+
+INSERT INTO note (title, content, author_id) VALUES ('Hello', 'World', 1);
+INSERT INTO note (title, content, author_id) VALUES ('Testing', '1..2..3..', 1);
+INSERT INTO note (title, content, author_id) VALUES ('You', 'An', 2);
+INSERT INTO note (title, content, author_id) VALUES ('Aint', 'Shit', 3);
+INSERT INTO note (title, content, author_id) VALUES ('Loves', 'Horses', 4);
+
+
+
+
 
