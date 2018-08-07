@@ -1,4 +1,5 @@
 PRAGMA foreign_keys = ON;
+-- "FOREIGN KEY"
 
 CREATE TABLE album (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,14 +15,17 @@ CREATE TABLE artist (
 CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
-    album_id INT REFERENCES album(id)
+    album_id INTEGER,
+    FOREIGN KEY(album_id) REFERENCES album(id)
     -- album_id INTEGER
 );
 
 CREATE TABLE artist_album (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  artist_id INT REFERENCES artist(id),
-  album_id INT REFERENCES album(id)
+  artist_id INTEGER,
+  album_id INTEGER,
+  FOREIGN KEY(artist_id) REFERENCES artist(id),
+  FOREIGN KEY(album_id) REFERENCES album(id)
 );
 
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);

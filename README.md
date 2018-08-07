@@ -102,15 +102,19 @@ column names in the following tables. We'll use `setup.sql` later.
 
   - Select all album titles by `Han Solo`.
 
-    <!-- SELECT album.title FROM album, artist_album, artist WHERE album.id = artist_album.album_id AND artist_album.artist_id = artist.name AND artist.name = 'Han Solo'; -->
+    SELECT artist.name, album.title FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist.name = 'Han Solo' AND artist_album.album_id = album.id;
 
   - Select the average year all albums were released.
+    SELECT avg(release_year) FROM album;
 
   - Select the average year all albums by `Leia and the Ewoks` were released.
+    SELECT avg(album.release_year) FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist.name = 'Leia and the Ewoks' AND artist_album.album_id = album.id;
 
   - Select the number of artists.
+    SELECT COUNT(\*) FROM artist;
 
   - Select the number of tracks on `Super Dubstep Album`.
+    SELECT COUNT(\*) FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
 
 ### Exercises, Day 2
 
