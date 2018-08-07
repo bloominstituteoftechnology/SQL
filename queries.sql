@@ -1,7 +1,8 @@
 -- Day01
 
 
-mode column header on
+-- mode column
+-- header on
 
 CREATE TABLE track (
    id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,21 +36,21 @@ CREATE TABLE artist_album (
 --Write SQL SELECT queries that:
 
 -- Show all albums.
-SELECT * FROM album WHERE album.release_year BETWEEN 1975 AND 1990;
+    SELECT * FROM album WHERE album.release_year BETWEEN 1975 AND 1990;
 -- Show all albums made between 1975 and 1990.
-SELECT * FROM album WHERE release_year <= 1990 AND release_year >= 1975;
+    SELECT * FROM album WHERE release_year <= 1990 AND release_year >= 1975;
 -- Show all albums whose names start with Super D.'%s%', 
-select * from album where title like 'Super D%';
+    select * from album where title like 'Super D%';
 -- Show all albums that have no release year.
 --
 
 -- Write SQL SELECT queries that:
 
 -- Show all track titles from Super Funky Album.
-SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
+    SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
 
 -- Same query as above, but rename the column from title to Track_Title in the output.
-SELECT track.title AS Track_Title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
+    SELECT track.title AS Track_Title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
 
 -- Select all album titles by Han Solo.
     select album.title from album, artist_album, artist where artist_album.album_id = album.id and
@@ -80,6 +81,7 @@ SELECT track.title AS Track_Title FROM track, album WHERE track.album_id = album
     day02: 
 
 -- sqlite3 notedb
+    -- .open notedb.db
 
 CREATE TABLE author (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
