@@ -64,7 +64,8 @@ Make a track table to hold track information:
 CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
-    album_id INTEGER -- "foreign key"
+    album_id INTEGER,
+    FOREIGN KEY (album_id) referenes album(id)
 );
 ```
 
@@ -142,7 +143,11 @@ column names in the following tables. We'll use `setup.sql` later.
   * Select all album titles by `Han Solo`. 
 
   ```sql
-  SELECT album.title FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Han Solo`;
+  SELECT album.title FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = 'Han Solo';
+  ```
+
+  ```sql
+  select album.title from album inner join artist_album on artist_album.album_id = album.id inner join artist on artist.id = artist_album.artist_id;
   ```
 
   * Select the average year all albums were released. 
@@ -154,13 +159,13 @@ column names in the following tables. We'll use `setup.sql` later.
   * Select the average year all albums by `Leia and the Ewoks` were released. 
 
   ```sql
-  SELECT AVG(album.release_year) FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Leia and the Ewoks`;
+  SELECT AVG(album.release_year) FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = 'Leia and the Ewoks';
   ```
 
   * Select the number of artists. 
 
   ```sql
-  SELECT COUNT() AS `#` FROM artist;
+  SELECT COUNT() AS '#' FROM artist;
   ```
 
   * Select the number of tracks on `Super Dubstep Album`.
@@ -176,7 +181,11 @@ Create a database for taking notes.
 * What are the columns that a note table needs?
 
 ```sql
-
+CREATE TABLE notes (
+  id PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(128),
+  content VARCHAR(1024)
+);
 ```
 
 * If you have a timestamp field, how do you auto-populate it with the date? 
