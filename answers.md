@@ -44,3 +44,18 @@ CREATE TABLE artist_album (
     FOREIGN KEY(album_id) REFERENCES album(id)
 );
 ```
+# Queries
+
+1. Show all albums.
+SELECT * FROM album;
+
+2. Show all albums made between 1975 and 1990.
+SELECT * FROM album WHERE release_year <= 1990 AND release_year >= 1975;
+
+SELECT * FROM album WHERE release_year BETWEEN 1975 AND 1990;
+
+3. Show all albums whose names start with Super D.
+SELECT * FROM album WHERE title like 'Super D%';
+
+4. Show all albums that have no release year.
+SELECT * FROM album WHERE release_year IS NULL;
