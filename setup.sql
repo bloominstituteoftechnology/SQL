@@ -46,7 +46,7 @@ INSERT INTO track (tracktitle, trackalbum) VALUES ("Super Dubstep Track 5", 5);
 
 
 
--- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS DAY 1=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 SELECT * FROM album;
 
@@ -77,10 +77,14 @@ WHERE artist_album.artist_id = artist.id AND
 artist_album.album_id = album.id AND 
 artist.name = "Leia and the Ewoks";
 
-SELECT count(*) from artist;
+SELECT COUNT(*) from artist;
 
 SELECT COUNT(*) FROM track, album
 WHERE track.trackalbum = album.id AND
 album.title = "Super Dubstep Album";
+
+-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- SELECT STATEMENTS DAY 2=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
 
 
