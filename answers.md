@@ -119,7 +119,7 @@ CREATE TABLE note (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128),
     content VARCHAR(128),
-    author_id INTEGER REFERENCES author(id),
+    author_id INTEGER REFERENCES author(id) ON DELETE CASCADE,
     created_at TIMESTAMP
     DEFAULT CURRENT_TIMESTAMP
 );
@@ -168,6 +168,18 @@ CREATE TABLE author (
 
 ### Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
 ```sql
-    SELECT COUNT(note.id), author.name FROM note LEFT JOIN author ON note.author_id = author.id GROUP BY author.name;
+    SELECT COUNT(note.title), author.name FROM note LEFT JOIN author ON note.author_id = author.id GROUP BY author.name;
 ```
 
+### Delete authors from the author table.
+
+#### Enable Foreign Key Constrains
+```sql
+    `PRAGMA foreign_keys = ON;`
+```
+
+```sql
+    DELETE FROM author WHERE author.name = "Thomas";
+```
+
+You get "FOREIGN KEY constraint failed", in order to go around this, you need to add ON DELETE CASCADE in the foreign key definition.
