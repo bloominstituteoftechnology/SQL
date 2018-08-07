@@ -26,6 +26,42 @@ INSERT INTO note (title, content, author_id) VALUES ('Aint', 'Shit', 3);
 INSERT INTO note (title, content, author_id) VALUES ('Loves', 'Horses', 4);
 
 
+-- Selects all authors
+SELECT * 
+  FROM author;
+
+-- Selects all notes
+SELECT * 
+  FROM note;
+
+-- Selects notes with author by name
+SELECT note.title, note.content 
+  FROM note, author 
+  WHERE note.author_id = author.id 
+  AND author.name = 'Devon';
+
+-- Selects author.name of note by id
+SELECT author.name 
+  FROM note, author 
+  WHERE note.author_id = author.id 
+  AND note.id = 2;
+
+-- Selects count of notes per author
+SELECT COUNT(note.id), author.name 
+  FROM note, author 
+  WHERE note.author_id = author.id 
+  GROUP BY author.name ;
+
+-- Deletes author by name
+DELETE FROM author WHERE author.name = 'Devon';
+
+-- Selects all authors
+SELECT * 
+  FROM author;
+
+-- Selects all notes
+SELECT * 
+  FROM note;
 
 
 
