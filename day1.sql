@@ -1,3 +1,5 @@
+pragma foreign_keys = on;
+
 CREATE TABLE album (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
