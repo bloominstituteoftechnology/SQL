@@ -105,25 +105,72 @@ column names in the following tables. We'll use `setup.sql` later.
     `CREATE TABLE`.
 
 * Write SQL `SELECT` queries that:
-  * Show all albums.  -- SELECT * FROM album;
-  * Show all albums made between 1975 and 1990. -- SELECT * FROM album WHERE release_year > 1975 and release_year < 1990;
-  * Show all albums whose names start with `Super D`. -- SELECT * FROM album WHERE title LIKE 'Super D%';
-  * Show all albums that have no release year. -- SELECT * FROM album WHERE release_year is NULL;
+  * Show all albums.  
+
+  ```sql
+  -- SELECT * FROM album;
+  ```
+
+  * Show all albums made between 1975 and 1990. 
+
+  ```sql
+  -- SELECT * FROM album WHERE release_year > 1975 and release_year < 1990;
+  ```
+
+  * Show all albums whose names start with `Super D`. 
+
+  ```sql
+  -- SELECT * FROM album WHERE title LIKE 'Super D%';
+  ```
+  
+  * Show all albums that have no release year. 
+
+  ```sql
+  -- SELECT * FROM album WHERE release_year is NULL;
+  ```
 
 * Write SQL `SELECT` queries that:
-  * Show all track titles from `Super Funky Album`. -- SELECT track.title FROM track, album                 WHERE track.album_id = album.id  AND album.title LIKE 'Super Funky Album';
+  * Show all track titles from `Super Funky Album`. 
+
+  ```sql
+  -- SELECT track.title FROM track, album WHERE track.album_id = album.id  AND album.title LIKE 'Super Funky Album';
+  ```
   * Same query as above, but rename the column from `title` to `Track_Title` in
-    the output. --SELECT track.title AS 'Track_Title' FROM track, album WHERE track.album_id = album.id AND album.title LIKE 'Super Funky Album';
+    the output. 
 
-  * Select all album titles by `Han Solo`. -- SELECT album.title FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Han Solo`;
+  ```sql
+  --SELECT track.title AS 'Track_Title' FROM track, album WHERE track.album_id = album.id AND album.title LIKE 'Super Funky Album';
+  ```
 
-  * Select the average year all albums were released. -- SELECT AVG(release_year) from album;
+  * Select all album titles by `Han Solo`. 
 
-  * Select the average year all albums by `Leia and the Ewoks` were released. -- SELECT AVG(album.release_year) FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Leia and the Ewoks`;
+  ```sql
+  -- SELECT album.title FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Han Solo`;
+  ```
 
-  * Select the number of artists. -- SELECT COUNT() AS `#` FROM artist;
+  * Select the average year all albums were released. 
 
-  * Select the number of tracks on `Super Dubstep Album`. -- SELECT COUNT(track.title) FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
+  ```sql
+  -- SELECT AVG(release_year) from album;
+  ```
+
+  * Select the average year all albums by `Leia and the Ewoks` were released. 
+
+  ```sql
+  -- SELECT AVG(album.release_year) FROM artist, album, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = `Leia and the Ewoks`;
+  ```
+
+  * Select the number of artists. 
+
+  ```sql
+  -- SELECT COUNT() AS `#` FROM artist;
+  ```
+
+  * Select the number of tracks on `Super Dubstep Album`.
+
+  ```sql
+  -- SELECT COUNT(track.title) FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
+  ```
 
 ### Exercises, Day 2
 
