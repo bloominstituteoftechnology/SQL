@@ -69,67 +69,116 @@ column names in the following tables. We'll use `setup.sql` later.
   * A title (of type `VARCHAR`, probably)
   * A reference to an `id` in table `album` (the album the track is on). This
     should be a _foreign key_.
+`done`
 
 * Create a table called `artist_album` to connect artists to albums. (Note that
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
+`done`
  
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
     `CREATE TABLE`.
+`done`
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+  `SELECT * FROM album;`
+
   * Show all albums made between 1975 and 1990.
+  `SELECT album.title FROM album WHERE 1974 < release_year < 1991;`
+
   * Show all albums whose names start with `Super D`.
+  `SELECT * FROM album WHERE album.title LIKE "Super D%";`
+
   * Show all albums that have no release year.
+  `SELECT album.title FROM album WHERE album.release_year is NULL;`
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+  `SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";`
+
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
+    `SELECT title AS 'Track_Title' FROM track WHERE album_id = 2;`
 
-  * Select all album titles by `Han Solo`.
-
+  * Select all album titles by `Han Solo`.  
+    `SELECT title, artist.name FROM album, artist WHERE artist.name = 'Han Solo';`
+  
   * Select the average year all albums were released.
-
+    `SELECT AVG(release_year) from album;`
+  
   * Select the average year all albums by `Leia and the Ewoks` were released.
+  `SELECT AVG(release_year) from album, artist_album, artist WHERE album_id = album.id and artist_id = artist.id and artist_id = 2;`
 
   * Select the number of artists.
-
+    `SELECT Count(*) FROM artist;`
+  
   * Select the number of tracks on `Super Dubstep Album`.
-
+    `SELECT Count(*) FROM track, album WHERE album_id = 5 and album_id = album.id;`
+    
 ### Exercises, Day 2
 
 Create a database for taking notes.
+  `Add a note Table`
+      CREATE TABLE notes (
+        dateCreated DATETIME NOT NULL DEFAULT(GETDATE()),
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title VARCHAR(128),
+        body VARCHAR(256),
+        author_id INTEGER FOREIGN KEY REFERENCES authors(author.name)
+      );
+  
+  `Add an author Table`
+      CREATE TABLE authors (
+        name VARCHAR(128),
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+      );
 
 * What are the columns that a note table needs?
+  `Note Title` - varchar(128)
+  `Note Body` - varchar(256)
+  `Note Author` - varchar(128)?
+  `Note ID` - Integer, autoincrement
+  `Note Timestamp` - automatic
 
 * If you have a timestamp field, how do you auto-populate it with the date?
+  `DateCreated DATETIME NOT NULL DEFAULT(GETDATE())` as a column property in the table
 
 * A note should have a foreign key pointing to an author in an author table.
+  `FOREIGN KEY` 
+  author points to author table.author name
 
 * What columns are needed for the author table?
+  `author name`
+  `author id`
+  `author notes`
 
 Write queries that:
 
+`PRAGMA foreign_keys = ON;`
 * Insert authors to the author table.
+  `INSERT INTO authors (name)`
 
 * Insert notes to the note table.
+  `INSERT INTO notes (title, body) VALUES ('noteTitle', 'noteBody')`
 
 * Select all notes by an author's name.
+  <!-- `SELECT notes FROM notes WHERE author_id = author -->
 
 * Select author for a particular note by note ID.
+  `SELECT author FROM note WHERE note_id = X`
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+  
 
 * Delete authors from the author table.
-  > Note that SQLite doesn't enforce foreign key constrains by default. You have
-  > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
-  
+  `DELETE FROM author WHERE author.name = X`
+
   * What happens when you try to delete an author with an existing note?
+  
   * How can you prevent this?
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
