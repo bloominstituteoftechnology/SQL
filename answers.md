@@ -1,8 +1,9 @@
 # Table Creation
 
 #### Enable Foreign Keys
+```sql
 PRAGMA foreign_keys = ON;
-
+```
 #### Album
 
 ```sql
