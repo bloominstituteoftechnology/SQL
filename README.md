@@ -80,13 +80,13 @@ column names in the following tables. We'll use `setup.sql` later.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
     `CREATE TABLE`.
 
-* Write SQL `SELECT` queries that:
-  * Show all albums.
+* Write SQL `SELECT` queries that: (see below)
+  * Show all albums. 
   * Show all albums made between 1975 and 1990.
   * Show all albums whose names start with `Super D`.
   * Show all albums that have no release year.
 
-* Write SQL `SELECT` queries that:
+* Write SQL `SELECT` queries that: (see commands below)
   * Show all track titles from `Super Funky Album`.
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
@@ -139,6 +139,8 @@ SELECTS:
 select * from album; 
 
 select * from album where release_year>=1975 and release_year <= 1990;
+or
+SELECT * FROM album WHERE album.release_year BETWEEN 1975 AND 1990;
 
  select * from album where title like 'Super D%';
 
@@ -153,3 +155,15 @@ select album.title from album, artist_album, artist
 where artist_album.album_id = album.id and
 artist_album.artist_id = artist.id and
 artist.name = "Han Solo";
+
+SELECT AVG(release_year) FROM album;
+
+SELECT AVG(release_year) FROM album, artist, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = "Leia and the Ewoks";
+
+select count(id) from artist;
+or 
+select count(*) from artist; 
+
+SELECT COUNT(track.id) FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
+
+SELECT COUNT(track.id) FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
