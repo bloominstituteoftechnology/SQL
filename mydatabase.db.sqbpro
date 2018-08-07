@@ -1,1 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/goez2/Documents/Git/LambdaSchool/Week_22 - SQL/SQL/mydatabase.db" foreign_keys="1"/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="626"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="sqlite_sequence"/><default_encoding codec=""/><browsetable_info data="AAAAAA=="/></tab_browse><tab_sql><sql name="SQL 1"></sql><current_tab id="0"/></tab_sql></sqlb_project>
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/goez2/Documents/Git/LambdaSchool/Week_22 - SQL/SQL/mydatabase.db" foreign_keys="1"/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="922"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="sqlite_sequence"/><default_encoding codec=""/><browsetable_info data="AAAAAA=="/></tab_browse><tab_sql><sql name="setup.sql">INSERT INTO album (title, release_year) VALUES (&quot;Super Awesome Album&quot;, 1990);
+INSERT INTO album (title) VALUES (&quot;Super Funky Album&quot;);
+INSERT INTO album (title, release_year) VALUES (&quot;Super Disco Album&quot;, 1978);
+INSERT INTO album (title, release_year) VALUES (&quot;Super Hairband Album&quot;, 1984);
+INSERT INTO album (title) VALUES (&quot;Super Dubstep Album&quot;);
+
+INSERT INTO artist (name) VALUES (&quot;Luke and the Droidtones&quot;);
+INSERT INTO artist (name) VALUES (&quot;Leia and the Ewoks&quot;);
+INSERT INTO artist (name) VALUES (&quot;Han Solo&quot;);
+
+INSERT INTO artist_album (artist_id, album_id) VALUES (1, 5);
+INSERT INTO artist_album (artist_id, album_id) VALUES (1, 2);
+INSERT INTO artist_album (artist_id, album_id) VALUES (2, 1);
+INSERT INTO artist_album (artist_id, album_id) VALUES (2, 2);
+INSERT INTO artist_album (artist_id, album_id) VALUES (3, 3);
+INSERT INTO artist_album (artist_id, album_id) VALUES (3, 4);
+
+INSERT INTO track (title, album_id) VALUES (&quot;Super Awesome Track 1&quot;, 1);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Awesome Track 2&quot;, 1);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Awesome Track 3&quot;, 1);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Awesome Track 4&quot;, 1);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Awesome Track 5&quot;, 1);
+
+INSERT INTO track (title, album_id) VALUES (&quot;Super Funky Track 1&quot;, 2);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Funky Track 2&quot;, 2);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Funky Track 3&quot;, 2);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Funky Track 4&quot;, 2);
+
+INSERT INTO track (title, album_id) VALUES (&quot;Super Disco Track 1&quot;, 3);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Disco Track 2&quot;, 3);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Disco Track 3&quot;, 3);
+
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 1&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 2&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 3&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 4&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 5&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 6&quot;, 4);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Hairband Track 7&quot;, 4);
+
+INSERT INTO track (title, album_id) VALUES (&quot;Super Dubstep Track 1&quot;, 5);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Dubstep Track 2&quot;, 5);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Dubstep Track 3&quot;, 5);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Dubstep Track 4&quot;, 5);
+INSERT INTO track (title, album_id) VALUES (&quot;Super Dubstep Track 5&quot;, 5);</sql><sql name="SQL 2"></sql><current_tab id="0"/></tab_sql></sqlb_project>
