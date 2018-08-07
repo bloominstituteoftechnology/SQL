@@ -74,7 +74,7 @@ column names in the following tables. We'll use `setup.sql` later.
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
- 
+
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
