@@ -147,13 +147,13 @@ column names in the following tables. We'll use `setup.sql` later.
   ```
 
   ```sql
-  select album.title from album inner join artist_album on artist_album.album_id = album.id inner join artist on artist.id = artist_album.artist_id;
+  SELECT album.title FROM album INNER JOIN artist_album ON artist_album.album_id = album.id INNER JOIN artist ON artist.id = artist_album.artist_id AND artist.name = 'Han Solo';
   ```
 
   * Select the average year all albums were released. 
 
   ```sql
-  SELECT AVG(release_year) from album;
+  SELECT AVG(release_year) FROM album;
   ```
 
   * Select the average year all albums by `Leia and the Ewoks` were released. 
@@ -182,28 +182,30 @@ Create a database for taking notes.
 
 ```sql
 CREATE TABLE notes (
-  id PRIMARY KEY AUTOINCREMENT,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   title VARCHAR(128),
-  content VARCHAR(1024)
+  content VARCHAR(1024),
+  author_id INTEGER,
+  datetime TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (author_id) REFERENCES author(id)
 );
 ```
 
 * If you have a timestamp field, how do you auto-populate it with the date? 
 
-```sql
-
-```
+added to create table above
 
 * A note should have a foreign key pointing to an author in an author table.
 
-```sql
-
-```
+added to create table above
 
 * What columns are needed for the author table?
 
 ```sql
-
+CREATE TABLE author (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(128)
+);
 ```
 
 Write queries that:
@@ -211,31 +213,41 @@ Write queries that:
 * Insert authors to the author table.
 
 ```sql
-
+INSERT INTO author (name) VALUES ('E. A. Poe');
+INSERT INTO author (name) VALUES ('John Doe');
+INSERT INTO author (name) VALUES ('Jack Frost');
+INSERT INTO author (name) VALUES ('Anthony Horowitz');
+INSERT INTO author (name) VALUES ('Lois Lowry');
 ```
 
 * Insert notes to the note table.
 
 ```sql
-
+INSERT INTO notes (title, content, author_id) VALUES ('Deaths', 'Need to write more depressing books', 1);
+INSERT INTO notes (title, content, author_id) VALUES ('Gifts', 'Need to give kids more gifts', 3);
+INSERT INTO notes (title, content, author_id) VALUES ('Series', 'Need to finish Alan Walker series', 4);
+INSERT INTO notes (title, content, author_id) VALUES ('Triplet', 'Need to hardback my triplet series', 5);
+INSERT INTO notes (title, content, author_id) VALUES ('Christmas', 'Make it Snow', 3);
+INSERT INTO notes (title, content, author_id) VALUES ('Anon', 'Stay Anonymous', 2);
+INSERT INTO notes (title, content, author_id) VALUES ('Giving', 'I wrote The Giver', 5);
 ```
 
 * Select all notes by an author's name.
 
 ```sql
-
+SELECT title, content FROM notes, author WHERE notes.author_id = author.id AND author.name = 'Jack Frost';
 ```
 
 * Select author for a particular note by note ID.
 
 ```sql
-
+SELECT name FROM author, notes WHERE notes.id = 3 AND notes.author_id = author.id;
 ```
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
 
 ```sql
-
+SELECT author.name, COUNT(notes.id) FROM author, notes WHERE notes.author_id = author.id GROUP BY author.name;
 ```
 
 * Delete authors from the author table.
@@ -243,8 +255,19 @@ Write queries that:
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+    `Error: foreign key constraint failed`
+
   * How can you prevent this?
+  ```sql
+  CREATE TABLE tablename (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    mykey INTEGER,
+    FOREIGN KEY (mykey) REFERENCES maintable(id) ON DELETE CASCADE
+  );
+  ```
+  `ON DELETE CASCADE` allows the primary key from the referenced table to be deleted without a foreign key constraint
+
+  there is also a `ON UPDATE CASCADE`
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
-
