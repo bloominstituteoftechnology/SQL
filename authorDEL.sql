@@ -1,0 +1,1 @@
+DELETE FROM author WHERE id = 1;
