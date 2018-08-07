@@ -102,12 +102,12 @@ CREATE TABLE notes (
 -- Write queries that:
 
 -- * Insert authors to the author table.
-INSERT INTO author (author_name) VALUES ("2imran");
+INSERT INTO author (author_name) VALUES ("imran");
 
 
 -- * Insert notes to the note table.
 INSERT INTO notes (title, content, author_id) VALUES ("test note1", "hi this is a test note", 1);
-INSERT INTO notes (title, content, author_id) VALUES ("test note2", "hi this is another note", 4);
+
 
 -- * Select all notes by an author's name.
 SELECT * FROM notes,author WHERE notes.author_id = author.id AND author.author_name='imran';
@@ -127,6 +127,8 @@ SELECT author_name, COUNT(*) as "total" FROM notes, author WHERE notes.author_id
   
 --   * What happens when you try to delete an author with an existing note?
 --   * How can you prevent this?
+-- sqlite> delete from author where author_name='imran2';
+-- Error: FOREIGN KEY constraint failed
 
 -- Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 -- and query the database as noted above.
