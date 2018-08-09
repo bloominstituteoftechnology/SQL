@@ -74,7 +74,13 @@ column names in the following tables. We'll use `setup.sql` later.
   an artist might have several albums and an album might be created by multiple
   artists.)
   * Use foreign keys for this, as well.
- 
+
+ CREATE TABLE artist_albums (
+    artist_id INTEGER,
+    album_id INTEGER,
+    FOREIGN KEY(artist_id) REFERENCES artist(id),
+    FOREIGN KEY(album_id) REFERENCES album(id)
+);
 * Run the queries in the file `setup.sql`. This will populate the tables.
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
@@ -82,9 +88,16 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+  ** SELECT * FROM album;
+
   * Show all albums made between 1975 and 1990.
+  ** SELECT * FROM album where release_year >= 1975 and release_year <= 1990;
+
   * Show all albums whose names start with `Super D`.
+  ** SELECT * FROM album where title LIKE "SUPER D%";
+
   * Show all albums that have no release year.
+  ** SELECT * from album where release_year is null;
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
@@ -92,14 +105,29 @@ column names in the following tables. We'll use `setup.sql` later.
     the output.
 
   * Select all album titles by `Han Solo`.
+    SELECT album.title FROM album, artist_album, artist
+   ...> WHERE artist_album.album_id = ablum.id AND
+   ...> artist_album.artist.id = artist.id AND
+   ...> artist.name = "Han Solo";
 
   * Select the average year all albums were released.
+    SELECT AVG(release_year) FROM album;
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
-
+    SELECT AVG(release_year) FROM album, artist_album, artist
+  ...> WHERE artist_album.album_id = album.id AND
+  ...> artist_album.artist_id = artist.id AND
+  ...> artist.name = "Leia and the Ewoks";
+  
   * Select the number of artists.
-
+    
+    SELECT COUNT(*) FROM artist
   * Select the number of tracks on `Super Dubstep Album`.
+    SELECT COUNT(*) FROM track, album
+      ...> WHERE track.album_id = album.id AND
+      ...> album.title = "Super Dubstep Album";
+
+
 
 ### Exercises, Day 2
 
