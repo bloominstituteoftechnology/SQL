@@ -240,10 +240,68 @@ Write queries that:
   INSERT INTO notes (title, text, author) VALUES ("travis2", "alice note 2", 6);
 
 * Select all notes by an author's name.
+
+  Alice:
+    SELECT title, text FROM notes, authors 
+    WHERE notes.author = authors.id 
+    AND authors.name ="alice";
+
+    title       text        
+    ----------  ------------
+    alice1      alice note 1
+    alice2      alice note 1
+
+  Justin:
+    SELECT title, text FROM notes, authors 
+    WHERE notes.author = authors.id 
+    AND authors.name = "justin";
+
+    title       text         
+    ----------  -------------
+    justin1     justin note 1
+    justin2     justin note 2
+
+  Bob:
+    SELECT title, text FROM notes, authors 
+    WHERE notes.author = authors.id 
+    AND authors.name = "bob";
+
+    title       text      
+    ----------  ----------
+    bob1        bob note 1
+    bob2        bob note 2
+
+  David:
+    SELECT title, text FROM notes, authors 
+    WHERE notes.author = authors.id 
+    AND authors.name = "david";
+
+    title       text        
+    ----------  ------------
+    david1      alice note 1
+    david2      alice note 2
+
+  Travis:
+    SELECT title, text FROM notes, authors 
+    WHERE notes.author = authors.id 
+    AND authors.name = "travis";
+
+    title       text        
+    ----------  ------------
+    travis1     alice note 1
+    travis2     alice note 2
   
 * Select author for a particular note by note ID.
+  
+  SELECT name FROM notes, authors 
+  WHERE notes.author = authors.id 
+  AND notes.id = 1;
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+
+SELECT name, COUNT(*) FROM authors, notes 
+WHERE notes.author = authors.id 
+GROUP BY notes.author;
 
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
