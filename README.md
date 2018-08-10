@@ -217,10 +217,30 @@ Write queries that:
 
 * Insert authors to the author table.
 
+  INSERT INTO authors (name) VALUES ("alice");
+  INSERT INTO authors (name) VALUES ("justin");
+  INSERT INTO authors (name) VALUES ("bob");
+  INSERT INTO authors (name) VALUES ("david");
+  INSERT INTO authors (name) VALUES ("mark");
+  INSERT INTO authors (name) VALUES ("travis");
+
 * Insert notes to the note table.
 
-* Select all notes by an author's name.
+  INSERT INTO notes (title, text, author) VALUES ("alice1", "alice note 1", 1);
+  INSERT INTO notes (title, text, author) VALUES ("alice2", "alice note 1", 1);
+  INSERT INTO notes (title, text, author) VALUES ("justin1", "justin note 1", 2);
+  INSERT INTO notes (title, text, author) VALUES ("justin2", "justin note 2", 2);
+  INSERT INTO notes (title, text, author) VALUES ("bob1", "bob note 1", 3);
+  INSERT INTO notes (title, text, author) VALUES ("bob2", "bob note 2", 3);
+  INSERT INTO notes (title, text, author) VALUES ("david1", "alice note 1", 4);
+  INSERT INTO notes (title, text, author) VALUES ("david2", "alice note 2", 4);
+  INSERT INTO notes (title, text, author) VALUES ("mark1", "alice note 1", 5);
+  INSERT INTO notes (title, text, author) VALUES ("mark2", "alice note 2", 5);
+  INSERT INTO notes (title, text, author) VALUES ("travis1", "alice note 1", 6);
+  INSERT INTO notes (title, text, author) VALUES ("travis2", "alice note 2", 6);
 
+* Select all notes by an author's name.
+  
 * Select author for a particular note by note ID.
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
