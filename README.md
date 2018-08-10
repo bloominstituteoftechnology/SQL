@@ -199,11 +199,19 @@ Create a database for taking notes.
 
 * What are the columns that a note table needs?
 
+  A note table needs an id, text, and title columns.
+
 * If you have a timestamp field, how do you auto-populate it with the date?
 
-* A note should have a foreign key pointing to an author in an author table.
+  I would use the built in TIMTSTAMP field and I would auto-populate it as
 
+    TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL to populate the field with current time.
+
+* A note should have a foreign key pointing to an author in an author table.
+    
 * What columns are needed for the author table?
+
+  The author table should have an id and name field.
 
 Write queries that:
 
