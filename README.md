@@ -1,5 +1,6 @@
 # SQL
 
+
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
 information. (Note that page is for PostgreSQL, but the SQL information is valid
