@@ -1,3 +1,28 @@
+CREATE TABLE album (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(128) NOT NULL,
+  release_year INTEGER
+);
+
+CREATE TABLE artist (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(128) NOT NULL
+);
+
+CREATE TABLE track (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(128),
+  album_id INTEGER,
+  FOREIGN KEY (album_id) REFERENCES album(id) -- ALWAYS: the last statements to be declared.
+);
+
+CREATE TABLE artist_album (
+  artist_id INTEGER,
+  album_id INTEGER,
+  FOREIGN KEY (artist_id) REFERENCES artist(id), -- ALWAYS: the last statements to be declared.
+  FOREIGN KEY (album_id) REFERENCES album(id) -- ALWAYS: the last statements to be declared.
+);
+
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
 INSERT INTO album (title, release_year) VALUES ("Super Disco Album", 1978);
