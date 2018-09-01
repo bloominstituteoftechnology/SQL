@@ -1,114 +1,87 @@
-/* In ~/sqliterc file, I added:
-PRAGMA foreign_keys = ON;
-.header on
-.mode column
-*/
+/* Create database for taking notes */
+CREATE TABLE author (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name VARCHAR(200) NOT NULL, last_name VARCHAR(255) NOT NULL);
 
-/* CREATE A MUSIC DATABASE */
-/* Create album table */
-CREATE TABLE album (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(128) NOT NULL, release_year INTEGER);
+CREATE TABLE note (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(200) NOT NULL, content VARCHAR(255) NOT NULL, author_id INT REFERENCES author(id), created_at datetime default current_timestamp, last_modified datetime default current_timestamp);
 
-/* Create artist table */
-CREATE TABLE artist (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(128) NOT NULL);
+/* add authors to database */
+INSERT INTO author (first_name, last_name) VALUES ("Robert", "Lazarus");
+INSERT INTO author (first_name, last_name) VALUES ("Dylan", "Thomas");
+INSERT INTO author (first_name, last_name) VALUES ("Rumtum", "Tugger");
+INSERT INTO author (first_name, last_name) VALUES ("Old", "Deuteronomy");
+INSERT INTO author (first_name, last_name) VALUES ("Bustopher", "Jones");
+INSERT INTO author (first_name, last_name) VALUES ("Rumpus", "Cat");
+INSERT INTO author (first_name, last_name) VALUES ("Mister", "Mistoffelees");
+INSERT INTO author (first_name, last_name) VALUES ("Skimble", "Shanks");
+INSERT INTO author (first_name, last_name) VALUES ("Growl", "Tiger");
+INSERT INTO author (first_name, last_name) VALUES ("Jenny", "Anydots");
+INSERT INTO author (first_name, last_name) VALUES ("Rumple", "Teazer");
+INSERT INTO author (first_name, last_name) VALUES ("Mungo", "Jerrie");
+INSERT INTO author (first_name, last_name) VALUES ("Munku", "Strap");
 
-/* Create track table */
-CREATE TABLE track (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(200), album_id INT REFERENCES album(id));
+/* Add notes to database */
+INSERT into note (title, content, author_id) values ("Guide to Thiefing Bacon", "The trick is to pretend you're not interested", 1);
+INSERT into note (title, content, author_id) values ("Hiding in plain sight", "The better you are at hiding, the more treats your mother will guiltily feed you", 1);
+INSERT into note (title, content, author_id) values ("Knowing when to Cuddle", "The wise cat learns when sprint day is.", 2);
+INSERT into note (title, content, author_id) values ("Splashing in the water", "But not really enjoying getting wet.", 2);
+INSERT into note (title, content, author_id) values ("If you offer me pheasant", "I'd rather have grouse.", 3);
+INSERT into note (title, content, author_id) values ("When you let me in", "Then I want to go out - I'm always on the wrong side of every door.",3);
+INSERT into note (title, content, author_id) values ("The oldest inhabitant croaks", "Well, of all things, can it be really?  Yes, no, oh hi, oh,my eye!  My mind may be wandering, but I confess I believe it is Old Deuteronomy.", 4);
+INSERT into note (title, content, author_id) values ("I'm so well preserved", "Because I've observed all my life a routine, and I say - I'm stillin my prime, I shall last out my time, that's the word from the stoutest of cats.", 5);
+INSERT into note (title, content, author_id) values ("I've sometimes been heard by the fire", "While I was about on the roof", 7);
+INSERT into note (title, content, author_id) values ("There's a whistle down the line at 11:39", "When the night mail's ready to depart - saying Simble, where is Skimble?  Has he gone to hunt the thimble?  We must find him or the train can't start", 8);
+INSERT into note (title, content, author_id) values ("Their behavior's not good", "And their manner's not nice.", 10);
+INSERT into note (title, content, author_id) values ("We have an extensive reputation", "We make our home in Victoria Grove.", 11);
+INSERT into note (title, content, author_id) values ("We go through the house like a hurricane", "No sober person could take his oath - was it Mungojerrie or Rumpleteazer - or could you have sworn that it might've been both?", 12);
 
-/* Create artist_album table */
-CREATE TABLE artist_album (artist_id INT REFERENCES artist(id), album_id INT REFERENCES album(id));
+/* Select all notes by an author's name */
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Robert";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Dylan";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Rumtum";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Old";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Bustopher";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Rumpus";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Mister";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Skimble";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Growl";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Jenny";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Rumple";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Mungo";
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.first_name = "Munku";
 
-/* Populate database with setup.sql data */
-/*      .quit
-        sqlite3 data.db < setup.sql     */
+/* Select author for a particular note by note ID */
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 1;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 2;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 3;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 4;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 5;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 6;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 7;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 8;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 9;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 10;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 11;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 12;
+SELECT author.first_name, author.last_name FROM note, author WHERE note.author_id = author.id AND note.id = 13;
 
-/* Show all albums */
-SELECT * from album;
-/* output:
-        id          title                release_year
-        ----------  -------------------  ------------
-        1           Super Awesome Album  1990
-        2           Super Funky Album
-        3           Super Disco Album    1978
-        4           Super Hairband Albu  1984
-        5           Super Dubstep Album             */
+/* Select names of all the authors along with the number of notes they have */
+SELECT author.first_name, author.last_name, COUNT(author_id) FROM author, note WHERE note.author_id = author.id GROUP BY author.last_name;
+SELECT author.first_name, author.last_name, COUNT(author_id) FROM author, note WHERE note.author_id = author.id GROUP BY author.first_name;
 
-/* Show all albums made between 1975 and 1990 */
-SELECT * from album WHERE release_year < 1990 AND release_year > 1975;
-/*  output:
-        id          title              release_year
-        ----------  -----------------  ------------
-        3           Super Disco Album  1978
-        4           Super Hairband Al  1984         */
+/* Delete authors from the author table */
+DELETE FROM author WHERE id=4;
 
-/* Show all albums whose names start with Super D. */
-SELECT * from album WHERE title LIKE 'Super D%';
-/*  output:
-        id          title              release_year
-        ----------  -----------------  ------------
-        3           Super Disco Album  1978
-        5           Super Dubstep Alb              */
+/* What happens when you try to delete an author with an existing note? */
+/* Foreign key constraint error - it does not allow you to delete. */
+/* Solution is changing the delete cascade */
 
-/* Show all albums that have no release year */
-SELECT * from album WHERE release_year IS NULL;
-/*  output:
-            id          title              release_year
-            ----------  -----------------  ------------
-            2           Super Funky Album
-            5           Super Dubstep Alb
-                                                            */
+/* Step one for me was opening notes.db so that my foreign_key constraints were turned off - .open notes.db */
+begin transaction;
+alter table note rename to _note_old_;
+CREATE TABLE note (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(200) NOT NULL, content VARCHAR(255) NOT NULL, author_id INT REFERENCES author(id) ON DELETE CASCADE, created_at datetime default current_timestamp, last_modified datetime default current_timestamp);
+INSERT INTO note SELECT * from _note_old_;
+commit;
+.quit
 
-/* Select all track titles from Super Funky Album */
-SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
-/*  output:
-            title
-            -------------------
-            Super Funky Track 1
-            Super Funky Track 2
-            Super Funky Track 3
-            Super Funky Track 4     */
-
-/* Select all track titles from Super Funky Album and change title to Track_Title in output */
-SELECT track.title AS Track_Title FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
-/*  output:
-            Track_Title
-            -------------------
-            Super Funky Track 1
-            Super Funky Track 2
-            Super Funky Track 3
-            Super Funky Track 4     */
-
-/* Select all album titles by Han Solo */
-SELECT album.title FROM album, artist, artist_album WHERE artist.id = artist_album.artist_id AND album.id = artist_album.album_id AND artist.name = 'Han Solo';
-/*  output:
-            title
-            -----------------
-            Super Disco Album
-            Super Hairband Al       */
-
-/* Select the average year all albums were released */
-SELECT AVG(release_year) from album;
-/*  output:
-        avg(release_year)
-        -----------------
-        1984.0              */
-
-/* Select average year all albums by Leia and the Ewoks were released */
-SELECT AVG(release_year) FROM album, artist, artist_album WHERE artist.id = artist_album.artist_id AND album.id = artist_album.album_id AND artist.name = 'Leia and the Ewoks';
-/*  output:
-        AVG(release_year)
-        -----------------
-        1990.0              */
-
-/* Select the number of artists */
-SELECT COUNT(id) FROM artist;
-/*  output:
-        count(id)
-        ----------
-        3                   */
-
-/* Select the number of tracks on Super Dubstep Album */
-SELECT COUNT(track.id) FROM track, album WHERE album.id = track.album_id and album.title = 'Super Dubstep Album';
-/*  output:
-        COUNT(track.id)
-        ---------------
-        5               */
+/* sqlite3 notes.db */
+drop table _note_old_;
+DELETE FROM author where author.id = 4;
