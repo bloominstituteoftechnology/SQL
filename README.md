@@ -76,30 +76,37 @@ column names in the following tables. We'll use `setup.sql` later.
   * Use foreign keys for this, as well.
  
 * Run the queries in the file `setup.sql`. This will populate the tables.
+    -> run command .read setup.sql to read queries from file
   * Fix any errors at this point by making sure your tables are correct.
   * `DROP TABLE` can be used to delete a table so you can recreate it with
     `CREATE TABLE`.
 
+Good resource for wildcard operators: https://www.w3schools.com/sql/sql_wildcards.asp
 * Write SQL `SELECT` queries that:
   * Show all albums.
-  * Show all albums made between 1975 and 1990.
+
+  * Show all albums made between 1975 and 1990. 
+
   * Show all albums whose names start with `Super D`.
-  * Show all albums that have no release year.
+
+  * Show all albums that have no release year. 
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
 
   * Select all album titles by `Han Solo`.
-
+  
   * Select the average year all albums were released.
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
-
+  
   * Select the number of artists.
 
   * Select the number of tracks on `Super Dubstep Album`.
+    
 
 ### Exercises, Day 2
 
