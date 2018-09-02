@@ -43,18 +43,3 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 2", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
-
--- SHOW ALL ALBUMS
-SELECT * FROM album
-
--- SELECT ALBUMS CREATE BETWEEN 1975 and 1990
-SELECT * FROM album
-WHERE release_year BETWEEN 1975 and 1990
-
--- SELECT ALBUMS THAT CONTAIN `Super D`
-SELECT * FROM album
-WHERE title Like 'Super D%'
-
--- SELECT ALBUMS WITHOUT A RELEASE YEAR
-SELECT * FROM album
-WHERE release_year IS NULL
