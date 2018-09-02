@@ -1,6 +1,6 @@
 --********************************       COMMANDS TO CREATE ALL TABLES FOR MUSIC DB       ************************************
 CREATE TABLE track (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(128), album_id INTEGER REFERENCES album(id));
-CREATE TABLE album(id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(128) NOT NULL, release_year INT);
+CREATE TABLE album (id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(128) NOT NULL, release_year INT);
 CREATE TABLE artist (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(128) NOT NULL);
 CREATE TABLE artist_album (artist_id INTEGER REFERENCES artist(id), album_id INTEGER REFERENCES album(id));
 PRAGMA foreign_keys=ON;
