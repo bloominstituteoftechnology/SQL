@@ -19,10 +19,38 @@ CREATE TABLE artist_album(artist_id INT REFERENCES artist(id), album_id INT REFE
 
 /*Queries*/
 /*Show all albums*/
+SELECT * from album;
+id          title                release_year
+----------  -------------------  ------------
+1           Super Awesome Album  1990
+2           Super Funky Album
+3           Super Disco Album    1978
+4           Super Hairband Albu  1984
+5           Super Dubstep Album
+
 /*Show all albums made between 1975 and 1990*/
+SELECT * from album WHERE release_year < 1990 AND release_year > 1975
+id          title              release_year
+----------  -----------------  ------------
+3           Super Disco Album  1978
+4           Super Hairband Al  1984
+
 /*Show all albums whose name starts with Super D*/
+SELECT * from album WHERE title LIKE 'Super D%'
+id          title              release_year
+----------  -----------------  ------------
+3           Super Disco Album  1978
+5           Super Dubstep Alb
+
 /*Show all albums than have no release year*/
+ SELECT * from album WHERE release_year is NULL;
+id          title              release_year
+----------  -----------------  ------------
+2           Super Funky Album
+5           Super Dubstep Alb
+
 /*Show all track titles from Super Funky Album*/
+
 /*Same as above but rename the column from title to Track_title in the output*/
 /*Select all album titles by Han Solo*/
 /*Select the average year all albums were released*/
