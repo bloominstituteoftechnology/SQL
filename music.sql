@@ -59,3 +59,45 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 3", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 4", 5);
 INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
 
+
+/********* SELECT queries *********/
+
+/********* Show all albums *********/
+
+SELECT * FROM album;
+id          title                release_year
+----------  -------------------  ------------
+1           Super Awesome Album  1990        
+2           Super Funky Album                
+3           Super Disco Album    1978        
+4           Super Hairband Albu  1984        
+5           Super Dubstep Album
+
+
+/******** Show all albums made between 1975 and 1990 *********/
+
+SELECT * FROM album WHERE release_year BETWEEN 1975 AND 1990;   -- inclusive begin and end value
+SELECT * FROM album WHERE release_year >= 1975 AND release_year <= 1990;    -- BETWEEN is shorthand for >= AND <=
+id          title                release_year
+----------  -------------------  ------------
+1           Super Awesome Album  1990        
+3           Super Disco Album    1978        
+4           Super Hairband Albu  1984 
+
+
+/********* Show all albums whose names start with Super D *********/
+
+SELECT * FROM album WHERE title LIKE 'Super D%';
+id          title              release_year
+----------  -----------------  ------------
+3           Super Disco Album  1978        
+5           Super Dubstep Alb  
+
+/********* Show all albums that have no release year *********/
+
+SELECT * FROM album WHERE release_year IS NULL;
+id          title              release_year
+----------  -----------------  ------------
+2           Super Funky Album              
+5           Super Dubstep Alb 
+
