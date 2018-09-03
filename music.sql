@@ -1,8 +1,8 @@
-sqlite3 musicdb.db          -- Specify a persistent DB file 
+-- sqlite3 musicdb.db          -- Specify a persistent DB file 
 
-PRAGMA foreign_keys = ON;   -- The library is compiled with foreign keys enabled. 
-.mode COLUMN
-.header ON
+-- PRAGMA foreign_keys = ON;   -- The library is compiled with foreign keys enabled. 
+-- .mode COLUMN
+-- .header ON
 
 
 /********* CREATE TABLES **********/
@@ -65,6 +65,7 @@ INSERT INTO track (title, album_id) VALUES ("Super Dubstep Track 5", 5);
 /********* Show all albums *********/
 
 SELECT * FROM album;
+/*
 id          title                release_year
 ----------  -------------------  ------------
 1           Super Awesome Album  1990        
@@ -72,35 +73,42 @@ id          title                release_year
 3           Super Disco Album    1978        
 4           Super Hairband Albu  1984        
 5           Super Dubstep Album
+*/
 
 
 /******** Show all albums made between 1975 and 1990 *********/
 
 SELECT * FROM album WHERE release_year BETWEEN 1975 AND 1990;   -- inclusive begin and end value
 SELECT * FROM album WHERE release_year >= 1975 AND release_year <= 1990;    -- BETWEEN is shorthand for >= AND <=
+/*
 id          title                release_year
 ----------  -------------------  ------------
 1           Super Awesome Album  1990        
 3           Super Disco Album    1978        
-4           Super Hairband Albu  1984 
+4           Super Hairband Albu  1984
+*/
 
 
 /********* Show all albums whose names start with Super D *********/
 
 SELECT * FROM album WHERE title LIKE 'Super D%';
+/*
 id          title              release_year
 ----------  -----------------  ------------
 3           Super Disco Album  1978        
 5           Super Dubstep Alb  
+*/
 
 
 /********* Show all albums that have no release year *********/
 
 SELECT * FROM album WHERE release_year IS NULL;
+/*
 id          title              release_year
 ----------  -----------------  ------------
 2           Super Funky Album              
 5           Super Dubstep Alb 
+*/
 
 
 /********* Show all track titles from Super Funky Album *********/
@@ -109,13 +117,14 @@ SELECT track.title
 FROM track, album 
 WHERE track.album_id = album.id 
 AND album.title = 'Super Funky Album';
-
+/*
 title              
 -------------------
 Super Funky Track 1
 Super Funky Track 2
 Super Funky Track 3
 Super Funky Track 4
+*/
 
 
 /********* Same query as above, but rename the column from title to Track_Title in the output *********/
@@ -125,13 +134,14 @@ AS Track_Title
 FROM track, album 
 WHERE track.album_id = album.id 
 AND album.title = 'Super Funky Album';
-
+/*
 Track_Title        
 -------------------
 Super Funky Track 1
 Super Funky Track 2
 Super Funky Track 3
 Super Funky Track 4
+*/
 
 
 /********* Select all album titles by Han Solo *********/
@@ -141,20 +151,22 @@ FROM artist, album, artist_album
 WHERE artist_album.album_id = album.id
 AND artist_album.artist_id = artist.id
 AND artist.name = 'Han Solo';
-
+/*
 title            
 -----------------
 Super Disco Album
 Super Hairband Al
+*/
 
 
 /********* Select the average year all albums were released *********/
 
 SELECT AVG(release_year) FROM album;
-
+/*
 AVG(release_year)
 -----------------
 1984.0 
+*/
 
 
 /********* Select the average year all albums by Leia and the Ewoks were released *********/
@@ -164,19 +176,21 @@ FROM artist, album, artist_album
 WHERE artist_album.album_id = album.id
 AND artist_album.artist_id = artist.id
 AND artist.name = 'Leia and the Ewoks';
-
+/*
 AVG(release_year)
 -----------------
 1990.0 
+*/
 
 
 /********* Select the number of artists *********/
 
 SELECT COUNT(id) FROM artist;
-
+/*
 COUNT(id) 
 ----------
 3
+*/
 
 
 /********* Select the number of tracks on Super Dubstep Album *********/
@@ -185,9 +199,10 @@ SELECT COUNT(track.title)
 FROM track, album
 WHERE track.album_id = album.id
 AND album.title = 'Super Dubstep Album';
-
+/*
 COUNT(track.title)
 ------------------
 5 
+*/
 
 
