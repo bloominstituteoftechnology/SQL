@@ -57,3 +57,8 @@ SELECT AVG(release_year) AS average_release_year
 
 -- Select the number of artists
 SELECT COUNT(name) AS number_of_artists FROM artist;
+
+-- Select the number of tracks on Super Dubstep Album
+SELECT COUNT(track.title) AS number_tracks
+  FROM track, album
+  WHERE track.album_id = album.id AND album.title = 'Super Dubstep Album';
