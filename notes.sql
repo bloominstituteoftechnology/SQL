@@ -30,3 +30,8 @@ and author.id is notes.author_id;
 select name from author, notes
 where note.id is 2
 and author.id is notes.author_id;
+
+-- LIST THE NAME OF EACH AUTHOR AND HOW MANY NOTES THEY HAVE
+select author.name, count(notes.id) from author, notes
+where author.id is notes.author_id
+group by author.name;
