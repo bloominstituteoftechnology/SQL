@@ -24,3 +24,11 @@ CREATE TABLE note (
     last_modified DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+/*QUERIES*/
+INSERT INTO author (first_name, last_name) VALUES ("Edgar", "Poe");
+INSERT INTO author (first_name, last_name) VALUES ("Mark", "Twain");
+INSERT INTO author (first_name, last_name) VALUES ("George", "Orwell");
+INSERT INTO author (first_name, last_name) VALUES ("Michael", "Chrichton");
+INSERT INTO author (first_name, last_name) VALUES ("Daniel", "Lazare");
+INSERT INTO author (first_name, last_name) VALUES ("Gore", "Vidal");
+
