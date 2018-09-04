@@ -17,3 +17,6 @@ create table author(
 
 -- INSERT AUTHORS INTO `author` TABLE
 insert into author (name) values('Brandon');
+
+-- INSERT NOTES IN `note` TABLE
+insert into notes (title, content, author_id) values('Note 1', '', 1);
