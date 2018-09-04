@@ -14,3 +14,6 @@ create table author(
   name varchar(255) not null,
   creation_date datetime default current_timestamp
 );
+
+-- INSERT AUTHORS INTO `author` TABLE
+insert into author (name) values('Brandon');
