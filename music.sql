@@ -54,3 +54,6 @@ SELECT AVG(release_year) AS average_release_year
     artist.id = artist_album.artist_id AND
     album.id = artist_album.album_id AND
     artist.name = 'Leia and the Ewoks';
+
+-- Select the number of artists
+SELECT COUNT(name) AS number_of_artists FROM artist;
