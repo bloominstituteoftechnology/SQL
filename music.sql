@@ -25,3 +25,8 @@ SELECT * FROM album WHERE title LIKE 'Super D%';
 
 -- Select all albums that have no release year
 SELECT * FROM album WHERE release_year IS NULL;
+
+-- Select all track titles from Super Funky Album
+SELECT track.title
+  FROM track, album
+  WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
