@@ -74,18 +74,11 @@ FROM
 SELECT AVG(release_year)
 FROM album;
 
--- SELECT artist_album.artist_id, artist.name, artist.id, album.release_year, album.id
--- FROM 
---     artist_album 
---         INNER JOIN artist
---             ON artist_album.artist_id = artist.id 
---             INNER JOIN album 
---                 ON artist_album.album_id = album.id
---                 WHERE artist.name LIKE 'Leia and the Ewoks%'
---                 AND SELECT AVG(release_year)
-                
---                 will figure this one out later...has to do with subqueries. Need to investigate more;
-
+SELECT AVG(release_year) FROM album, artist, artist_album
+    WHERE artist_album.album_id = album.id AND artist_album.artist_id = artist.id AND artist.name = "Leia and the Ewoks";
 
 SELECT COUNT(name)
 FROM artist;
+
+SELECT COUNT(Track_Title) FROM album, track
+WHERE album.id = track.album_id;
