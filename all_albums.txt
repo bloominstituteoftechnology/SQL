@@ -1,0 +1,17 @@
+id          title                release_year
+----------  -------------------  ------------
+1           Super Awesome Album  1990        
+2           Super Funky Album                
+3           Super Disco Album    1978        
+4           Super Hairband Albu  1984        
+5           Super Dubstep Album              
+6           Super Awesome Album  1990        
+7           Super Funky Album                
+8           Super Disco Album    1978        
+9           Super Hairband Albu  1984        
+10          Super Dubstep Album              
+11          Super Awesome Album  1990        
+12          Super Funky Album                
+13          Super Disco Album    1978        
+14          Super Hairband Albu  1984        
+15          Super Dubstep Album              
