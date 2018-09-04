@@ -28,10 +28,16 @@ and author.id is notes.author_id;
 
 -- SELECT AUTHOR FOR A PARTICULAR NOTE BY THE NOTE ID
 select name from author, notes
-where note.id is 2
+where note.id is 1
 and author.id is notes.author_id;
 
 -- LIST THE NAME OF EACH AUTHOR AND HOW MANY NOTES THEY HAVE
 select author.name, count(notes.id) from author, notes
 where author.id is notes.author_id
 group by author.name;
+
+-- DELETE AUTHOR AND ALL ASSOCIATED NOTE
+begin transaction;
+delete from notes where author_id is 1;
+delete from author where id is 1;
+commit;
