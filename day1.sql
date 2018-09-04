@@ -36,7 +36,7 @@ AND album_id = album.id
 
 -- Select all album titles by `Han Solo`.
 
- SELECT album.title AS Album_Title
+SELECT album.title AS Album_Title
 from album
 JOIN artist ON(artist.name = "Han Solo");
 -- OR 
