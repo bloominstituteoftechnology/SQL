@@ -64,3 +64,46 @@ SELECT * from album WHERE release_year IS NULL;
 
 -- 2|Super Funky Album|
 -- 5|Super Dubstep Album|
+
+/*ADVANCED QUERIES AND OUTPUT*/
+
+-- Show all track titles from Super Funky Album.
+SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
+
+--             title
+--             -------------------
+--             Super Funky Track 1
+--             Super Funky Track 2
+--             Super Funky Track 3
+--             Super Funky Track 4
+
+
+-- Same query as above, but rename the column from title to Track_Title in the output.
+SELECT track.title AS Track_Title from track, album WHERE track.album_id=album.id AND album.title = 'Super Funky Album';
+
+--             Track_Title
+--             -------------------
+--             Super Funky Track 1
+--             Super Funky Track 2
+--             Super Funky Track 3
+--             Super Funky Track 4 
+
+
+-- Select all album titles by Han Solo.
+
+
+
+-- Select the average year all albums were released.
+
+
+
+-- Select the average year all albums by Leia and the Ewoks were released.
+
+
+
+-- Select the number of artists.
+
+
+
+-- Select the number of tracks on Super Dubstep Album.
+
