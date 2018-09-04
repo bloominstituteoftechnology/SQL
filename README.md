@@ -82,6 +82,12 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+  ``` sqlite> select * from album;
+1|Super Awesome Album|1990
+2|Super Funky Album|
+3|Super Disco Album|1978
+4|Super Hairband Album|1984
+5|Super Dubstep Album|```
   * Show all albums made between 1975 and 1990.
   * Show all albums whose names start with `Super D`.
   * Show all albums that have no release year.
