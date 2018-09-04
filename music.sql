@@ -43,3 +43,6 @@ SELECT album.title
     artist.id = artist_album.artist_id AND
     album.id = artist_album.album_id AND
     artist.name = 'Han Solo';
+
+-- Select the average year all albums were released
+SELECT AVG(release_year) AS average_release_year FROM album;
