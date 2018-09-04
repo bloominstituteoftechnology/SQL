@@ -35,3 +35,11 @@ SELECT track.title
 SELECT track.title AS Track_Title
   FROM track, album
   WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
+
+-- Select all album titles by Han Solo
+SELECT album.title
+  FROM album, artist, artist_album
+  WHERE 
+    artist.id = artist_album.artist_id AND
+    album.id = artist_album.album_id AND
+    artist.name = 'Han Solo';
