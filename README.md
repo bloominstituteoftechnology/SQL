@@ -135,30 +135,55 @@ Create a database for taking notes.
 
 * What are the columns that a note table needs?
 
+CREATE TABLE notes( id INTEGER PRIMARY KEY AUTOINCREMENT, title VARCHAR(128) NOT NULL, body VARCHAR(256) , Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, author_ID INT REFERENCES author(id));
+
 * If you have a timestamp field, how do you auto-populate it with the date?
+Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 
 * A note should have a foreign key pointing to an author in an author table.
 
+
+author_ID INT REFERENCES author(id)
+
 * What columns are needed for the author table?
 
+id
+name
+
+CREATE TABLE author( id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(128) NOT NULL);
 Write queries that:
 
 * Insert authors to the author table.
 
+ INSERT INTO author (name) VALUES ("john green");
+
 * Insert notes to the note table.
+
+INSERT INTO notes (title, body, author_ID) VALUES ("title goes here", "body here", 1);
 
 * Select all notes by an author's name.
 
+SELECT * FROM notes,author WHERE author.name = "john green" AND author.id = author_id;
+
 * Select author for a particular note by note ID.
+
+SELECT * FROM notes,author WHERE notes.id = 1  AND author.id = author_id;
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
 
+SELECT COUNT(author_id),author.name  
+  FROM author, notes 
+  WHERE author.id = notes.author_id
+  GROUP BY author.name; 
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+   DELETE FROM author WHERE name = "samarv";
   * How can you prevent this?
+
+  cascading?
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
