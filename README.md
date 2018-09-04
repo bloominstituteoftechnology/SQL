@@ -135,17 +135,25 @@ Write queries that:
 * Insert notes to the note table.
 
 * Select all notes by an author's name.
+  > SELECT * FROM note, author WHERE note.author_id = author.id AND author.name = "Braden";
 
 * Select author for a particular note by note ID.
+  > SELECT author.name FROM author, note WHERE note.author_id = author.id AND note.id = 1;
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+  > SELECT COUNT(*), name FROM note, author WHERE note.author_id = author.id GROUP BY author_id;
 
 * Delete authors from the author table.
+  >> DELETE FROM author WHERE author.name = "Braden";
+
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+  > `Error: FOREIGN KEY constraint failed`
+
   * How can you prevent this?
+  > Add `ON DELETE CASCADE` to the end of the author_id reference in the note table
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
