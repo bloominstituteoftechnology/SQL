@@ -15,6 +15,11 @@ CREATE TABLE track (
     album_id INTEGER REFERENCES album(id)
 );
 
+CREATE TABLE artist_album (
+    artist_id INTEGER REFERENCES artist(id),
+    album_id INTEGER REFERENCES album(id)
+);
+
 
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
