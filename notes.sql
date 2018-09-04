@@ -42,3 +42,59 @@ INSERT into note (title, content, author_id) values ("Voter Anxiety", "Fifty per
 INSERT into note (title, content, author_id) values ("Silence is Golden", "It is better to keep your mouth closed and let people think you are a fool than to open it and remove all doubt.", 2);
 INSERT into note (title, content, author_id) values ("1984", "It was a bright day in April, and the clocks were striking thirteen.", 3);
 
+
+-- Select all notes by an author's name.
+SELECT note.title, note.content FROM note, author WHERE note.author_id = author.id AND author.last_name = "Twain";
+
+-- OUTPUT
+-- title              content
+-- -----------------  --------------------------------------------------------------------------------
+-- Secret to Success  All you need in this life is ignorance and confidence, and then success is sure.
+-- Silence is Golden  It is better to keep your mouth closed and let people think you are a fool than
+
+
+-- Select author for a particular note by note ID.
+SELECT first_name, last_name FROM note, author WHERE author.id = note.author_id AND note.id = 3;
+
+-- OUTPUT
+-- first_name  last_name
+-- ----------  ----------
+-- George      Orwell
+
+
+
+-- Select the names of all the authors along with the number of notes they each have. (Hint: GROUP BY.)
+SELECT first_name, last_name, COUNT(author_id) FROM author, note WHERE author.id = note.author_id GROUP BY author.id;
+
+-- first_name  last_name   COUNT(*)
+-- ----------  ----------  ----------
+-- Edgar       Poe         1
+-- Mark        Twain       2
+-- George      Orwell      2
+-- Michael     Chrichton   1
+-- Daniel      Lazare      1
+-- Gore        Vidal       2
+
+
+-- Delete authors from the author table.
+
+DELETE FROM author WHERE id=4;
+-- OUTPUT: Error: FOREIGN KEY constraint failed
+-- Have to turn PRAGMA off
+
+PRAGMA foreign_keys = OFF;
+DELETE FROM author WHERE id=4;
+
+
+SELECT first_name, last_name, COUNT(author_id) FROM author, note WHERE author.id = note.author_id GROUP BY author.id;
+
+-- OUTPUT
+-- first_name  last_name   COUNT(author_id)
+-- ----------  ----------  ----------------
+-- Edgar       Poe         1
+-- Mark        Twain       2
+-- George      Orwell      2
+-- Daniel      Lazare      1
+-- Gore        Vidal       2
+
+-- AUTHOR SUCCESSFULLY DELETED
