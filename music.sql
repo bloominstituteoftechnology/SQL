@@ -46,3 +46,11 @@ SELECT album.title
 
 -- Select the average year all albums were released
 SELECT AVG(release_year) AS average_release_year FROM album;
+
+-- Select the average year all albums by Leia and the Ewoks were released
+SELECT AVG(release_year) AS average_release_year
+  FROM album, artist, artist_album
+  WHERE 
+    artist.id = artist_album.artist_id AND
+    album.id = artist_album.album_id AND
+    artist.name = 'Leia and the Ewoks';
