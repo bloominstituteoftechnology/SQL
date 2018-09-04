@@ -21,3 +21,10 @@ create table note(
     insert into note(title, content, user_id) values("Note10", "The content of note 10 goes in here", 3);
     insert into note(title, content, user_id) values("Note11", "The content of note 11 goes in here", 3);
     insert into note(title, content, user_id) values("Note12", "The content of note 12 goes in here", 3);
+
+
+    select * from note N join user U  on U.user_id = N.user_id where U.username = 'adfaris;
+
+    select user_id, id, title, content from note where user_id = 1;
+
+    select username, count(id) from user u join note n ON u.user_id = n.user_id group by username;
