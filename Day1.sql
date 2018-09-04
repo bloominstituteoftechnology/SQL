@@ -26,7 +26,7 @@ CREATE TABLE artist_album (
 );
 
 .read setup.db
-
+-- Queries
 SELECT * FROM album
 SELECT * FROM album WHERE release_year >= 1975 AND release_year <= 1990;
 SELECT * FROM album WHERE release_year BETWEEN 1975 and 1990;

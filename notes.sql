@@ -12,7 +12,7 @@ CREATE TABLE note (
     created_on DATETIME NOT NULL default(date('now')),
     author_id INTEGER REFERENCES author(id)
 );
-
+-- Queries
 INSERT INTO author (name) VALUES ("Chaucer");
 INSERT INTO author (name) VALUES ("Orwell");
 INSERT INTO author (name) VALUES ("Clancy");
