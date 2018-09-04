@@ -94,20 +94,36 @@ SELECT track.title AS Track_Title from track, album WHERE track.album_id=album.i
 
 
 -- Select all album titles by Han Solo.
+SELECT album.title from album, artist, artist_album WHERE artist.id = artist_album.artist_id AND album.id = artist_album.album_id AND artist.name = 'Han Solo';
 
+-- title
+-- Super Disco Album
+-- Super Hairband Album
 
 
 -- Select the average year all albums were released.
+SELECT AVG(release_year) from album;
 
+-- AVG(release_year)
+-- 1984.0
 
 
 -- Select the average year all albums by Leia and the Ewoks were released.
+SELECT AVG(release_year) from album, artist, artist_album WHERE artist.id = artist_album.artist_id AND album.id = artist_album.album_id AND artist.name = 'Leia and the Ewoks';
 
+-- AVG(release_year)
+-- 1990.0
 
 
 -- Select the number of artists.
+SELECT COUNT(id) FROM artist;
 
+-- COUNT(id)
+-- 3
 
 
 -- Select the number of tracks on Super Dubstep Album.
+SELECT COUNT(track.id) FROM track, album WHERE album.id = track.album_id AND album.title = 'Super Dubstep Album';
 
+-- COUNT(track.id)
+-- 5
