@@ -81,4 +81,5 @@ SELECT COUNT(name)
 FROM artist;
 
 SELECT COUNT(Track_Title) FROM album, track
-WHERE album.id = track.album_id;
+WHERE album.id = track.album_id AND
+album.title = "Super Dubstep Album";
