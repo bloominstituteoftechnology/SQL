@@ -7,3 +7,10 @@ create table notes(
   author_id integer not null,
   foreign key(author_id) references author(id)
 );
+
+-- CREATE `author` TABLE
+create table author(
+  id integer primary key autoincrement,
+  name varchar(255) not null,
+  creation_date datetime default current_timestamp
+);
