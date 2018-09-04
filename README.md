@@ -1,4 +1,4 @@
-# SQL
+# SQL 
 
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
