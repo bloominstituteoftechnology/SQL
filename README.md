@@ -83,7 +83,7 @@ column names in the following tables. We'll use `setup.sql` later.
 * Write SQL `SELECT` queries that:
   * Show all albums.
   * Show all albums made between 1975 and 1990.
-  * Show all albums whose names start with `Super D`.
+  * Show all albums whose titles start with `Super D`.
   * Show all albums that have no release year.
 
 * Write SQL `SELECT` queries that:
