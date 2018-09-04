@@ -20,3 +20,7 @@ insert into author (name) values('Brandon');
 
 -- INSERT NOTES IN `note` TABLE
 insert into notes (title, content, author_id) values('Note 1', '', 1);
+
+-- SELECT ALL NOTES BY AUTHORS NAME
+select title, content from notes, author
+where author.name is 'brandon';
