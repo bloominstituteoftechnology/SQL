@@ -115,12 +115,12 @@ Hermione    Granger
 
 
 /********* Select the names of all the authors along with the number of notes they each have ********/
-SELECT firstname, lastname, COUNT(note.id)
+SELECT firstname, lastname, COUNT(*)  -- COUNT(note.id) returns the number that NOT NULL.
 FROM note, author
 WHERE author.id = note.author_id
 GROUP BY author.id;
 /*
-firstname   lastname    COUNT(note.id)
+firstname   lastname    COUNT(*)
 ----------  ----------  --------------
 Harry       Potter      3             
 Ron         Weasley     3             
