@@ -1,3 +1,33 @@
+-- CREATE ALBUMS TABLE
+CREATE TABLE album (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(255) NOT NULL,
+  release_year INTEGER
+);
+
+-- CREATE ARTIST TABLE
+CREATE TABLE artist (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(255)
+);
+
+-- CREATE TRACK TABLE
+CREATE TABLE track (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title VARCHAR(255),
+  album_id INTEGER NOT NULL,
+  FOREIGN KEY(album_id) REFERENCES album(id)
+);
+
+-- CREATE ARTIST_ALBUM TABLE
+CREATE TABLE artist_album (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist_id INTEGER NOT NULL,
+  album_id INTEGER NOT NULL,
+  FOREIGN KEY(artist_id) REFERENCES artist(id),
+  FOREIGN KEY(album_id) REFERENCES album(id)
+);
+
 INSERT INTO album (title, release_year) VALUES ("Super Awesome Album", 1990);
 INSERT INTO album (title) VALUES ("Super Funky Album");
 INSERT INTO album (title, release_year) VALUES ("Super Disco Album", 1978);
