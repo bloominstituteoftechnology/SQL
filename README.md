@@ -185,11 +185,27 @@ Create a database for taking notes.
 
 * What are the columns that a note table needs?
 
+|Columns      |Relation |
+|:---:        |:---:    |
+|id           |Primary  |
+|title        |         |
+|note_text    |         |
+|date_created |         |
+|author_id    |Foreign  |
+
 * If you have a timestamp field, how do you auto-populate it with the date?
+
+Per this [StackOverflow answer](https://stackoverflow.com/a/14462319), use `CURRENT_TIMESTAMP` 
+as the default value.
 
 * A note should have a foreign key pointing to an author in an author table.
 
 * What columns are needed for the author table?
+
+|Columns      |Relation |
+|:---:        |:---:    |
+|id           |Primary  |
+|author_name  |         |
 
 Write queries that:
 
@@ -207,9 +223,13 @@ Write queries that:
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
-  * What happens when you try to delete an author with an existing note?
-  * How can you prevent this?
+  * What happens when you try to delete an author with an existing note?<br/>
+  `FOREIGN KEY constraint failed`<br/>
+  This happens because we are trying to authors, but will end up leaving notes with foreign keys pointing to nowhere if we do so, so the deletion is stopped.
 
+  * How can you prevent this?
+  We can set `ON DELETE CASCADE`, which will delete all related rows with a foreign key matching the author being deleted.
+  
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
 
