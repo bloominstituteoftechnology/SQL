@@ -23,8 +23,10 @@ insert into notes (title, content, author_id) values('Note 1', '', 1);
 
 -- SELECT ALL NOTES BY AUTHORS NAME
 select title, content from notes, author
-where author.name is 'brandon';
+where author.name is 'Brandon'
+and author.id is notes.author_id;
 
 -- SELECT AUTHOR FOR A PARTICULAR NOTE BY THE NOTE ID
-select name from author, notes, author_notes
-where author.name is 'brandon';
+select name from author, notes
+where note.id is 2
+and author.id is notes.author_id;
