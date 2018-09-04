@@ -30,3 +30,8 @@ SELECT * FROM album WHERE release_year IS NULL;
 SELECT track.title
   FROM track, album
   WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
+
+-- Select all track titles from Super Funky Album and rename title column to Track_Title
+SELECT track.title AS Track_Title
+  FROM track, album
+  WHERE track.album_id = album.id AND album.title = 'Super Funky Album';
