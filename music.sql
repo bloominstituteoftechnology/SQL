@@ -41,29 +41,33 @@ CREATE TABLE artist_album (
 /*Show all albums*/
 SELECT * FROM album;
 
--- 1|Super Awesome Album|1990
--- 2|Super Funky Album|
--- 3|Super Disco Album|1978
--- 4|Super Hairband Album|1984
--- 5|Super Dubstep Album|
+-- id   |title                  |release_year
+-- 1    |Super Awesome Album    |1990
+-- 2    |Super Funky Album      |
+-- 3    |Super Disco Album      |1978
+-- 4    |Super Hairband Album   |1984
+-- 5    |Super Dubstep Album    |
 
 /*Show all albums between 1975 and 1990*/
 SELECT * from album WHERE 1975 < release_year AND release_year < 1990;
 
--- 3|Super Disco Album|1978
--- 4|Super Hairband Album|1984
+-- id   |title                  |release_year
+-- 3    |Super Disco Album      |1978
+-- 4    |Super Hairband Album   |1984
 
 /*Show all albums that start with "Super D" */
 SELECT * from album WHERE title LIKE 'Super D%';
 
--- 3|Super Disco Album|1978
--- 5|Super Dubstep Album|
+-- id   |title              |release_year
+-- 3    |Super Disco Album  |1978
+-- 5    |Super Dubstep Album|
 
 /*Show all albums with no release year*/
 SELECT * from album WHERE release_year IS NULL;
 
--- 2|Super Funky Album|
--- 5|Super Dubstep Album|
+-- id   |title              |release_year
+-- 2    |Super Funky Album  |
+-- 5    |Super Dubstep Album|
 
 /*ADVANCED QUERIES AND OUTPUT*/
 
