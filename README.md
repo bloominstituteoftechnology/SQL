@@ -82,44 +82,93 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+  ``` sqlite> select * from album;
+1|Super Awesome Album|1990
+2|Super Funky Album|
+3|Super Disco Album|1978
+4|Super Hairband Album|1984
+5|Super Dubstep Album|```
+
   * Show all albums made between 1975 and 1990.
+  ``` sqlite> select * from album where release_year between 1975 and 1990;
+1|Super Awesome Album|1990
+3|Super Disco Album|1978
+4|Super Hairband Album|1984```
+
   * Show all albums whose names start with `Super D`.
+```sqlite> select * from album where title like '%Super D%';
+3|Super Disco Album|1978
+5|Super Dubstep Album| ```
+
   * Show all albums that have no release year.
+```sqlite> select * from album where release_year is NULL;
+2|Super Funky Album|
+5|Super Dubstep Album| ```
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+
+ ```sqlite> select title from track where album_id = 2;
+Super Funky Track 1
+Super Funky Track 2
+Super Funky Track 3
+Super Funky Track 4 ```
+
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
 
+    ```sqlite> select title AS 'Track_Title' from track where album_id = 2;
+Super Funky Track 1
+Super Funky Track 2
+Super Funky Track 3
+Super Funky Track 4 ```
+
   * Select all album titles by `Han Solo`.
+  ``` sqlite> select title from album where title = 'Han Solo';```
 
   * Select the average year all albums were released.
+  ```sqlite> select avg(release_year) as 'Average year' from album;
+1984.0 ```
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
+  ```sqlite> select AVG(release_year), A.name from album as AL
+   ...> JOIN artist_album as AA ON AA.album_id = AL.album_id
+   ...> JOIN artist as A ON A.artist_id = AA.artist_id
+   ...> where A.name = 'Leia and the Ewoks';
+AVG(release_year)|name
+1990.0|Leia and the Ewoks ```
 
   * Select the number of artists.
+  ``` sqlite> select count(artist_id) from artist;
+3```
 
   * Select the number of tracks on `Super Dubstep Album`.
+  ``` sqlite> select count(*) from album as A inner join track as T on A.album_id = T.album_id where T.title like
+   ...> '%Super Dubstep%';
+5```
 
 ### Exercises, Day 2
 
 Create a database for taking notes.
 
-* What are the columns that a note table needs?
+* What are the columns that a note table needs? ID, title, content, user_id
 
-* If you have a timestamp field, how do you auto-populate it with the date?
+* If you have a timestamp field, how do you auto-populate it with the date? timestamp DATE DEFAULT (datetime('now','localtime'))
 
 * A note should have a foreign key pointing to an author in an author table.
 
-* What columns are needed for the author table?
+* What columns are needed for the author table? ID, username, created_at
 
 Write queries that:
 
 * Insert authors to the author table.
+sqlite> INSERT INTO user (username) VALUES ("adfaris");
 
 * Insert notes to the note table.
+```sqlite> INSERT INTO note (title, content) VALUES ("Note 1", "The content of note 1 goes in here"); ```
 
 * Select all notes by an author's name.
+select * from note N join user U  on U.user_id = N.user_id where U.username = 'adfaris;
 
 * Select author for a particular note by note ID.
 
@@ -130,7 +179,9 @@ Write queries that:
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+  ERROR: FOREIGN Key constraint failed
   * How can you prevent this?
+  CASCADE DELETE
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
