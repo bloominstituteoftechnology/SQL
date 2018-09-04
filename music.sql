@@ -22,3 +22,6 @@ SELECT * FROM album WHERE release_year >= 1975 AND release_year <= 1990;
 
 -- Select all albums whose names start with Super D
 SELECT * FROM album WHERE title LIKE 'Super D%';
+
+-- Select all albums that have no release year
+SELECT * FROM album WHERE release_year IS NULL;
