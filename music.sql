@@ -13,3 +13,7 @@ CREATE TABLE artist_album (
   artist_id INT NOT NULL REFERENCES artist(id),
   album_id INT NOT NULL REFERENCES album(id)
 );
+
+-- Select all albums
+SELECT * FROM album;
+
