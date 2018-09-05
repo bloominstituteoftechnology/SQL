@@ -82,17 +82,22 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+   `SELECT * FROM album;`
   * Show all albums made between 1975 and 1990.
+   `SELECT * FROM album WHERE release_year BETWEEN 1975 AND 1990;`
   * Show all albums whose names start with `Super D`.
+   `SELECT * FROM album WHERE title LIKE 'Super D%';`
   * Show all albums that have no release year.
+   `SELECT * FROM album WHERE release_year is NULL;`
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+   `SELECT track.title FROM track JOIN album ON album.id = track.album_id WHERE album.title IS 'Super Funky Album';`
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
-
+    `SELECT track.title AS Track_Title FROM track JOIN album ON album.id = track.album_id WHERE album.title IS 'Super Funky Album';`
   * Select all album titles by `Han Solo`.
-
+    
   * Select the average year all albums were released.
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
