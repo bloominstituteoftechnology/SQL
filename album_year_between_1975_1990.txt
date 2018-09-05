@@ -1,0 +1,11 @@
+id          title                release_year
+----------  -------------------  ------------
+1           Super Awesome Album  1990        
+3           Super Disco Album    1978        
+4           Super Hairband Albu  1984        
+6           Super Awesome Album  1990        
+8           Super Disco Album    1978        
+9           Super Hairband Albu  1984        
+11          Super Awesome Album  1990        
+13          Super Disco Album    1978        
+14          Super Hairband Albu  1984        
