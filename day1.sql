@@ -10,7 +10,7 @@ SELECT track.title FROM track,album WHERE album.title = 'Super Funky Album' AND 
 
 SELECT track.title AS Track_Title FROM track,album WHERE album_id = album.id AND album.title = 'Super Funky Album';
 
-SELECT * FROM artist, artist_album WHERE artist.id = artist_id AND artist.name= 'Han Solo';
+SELECT album.title FROM artist, artist_album, album WHERE artist.id = artist_id AND album.id = album_id AND artist.name= 'Han Solo';
 
 SELECT AVG(release_year) FROM album;
 
