@@ -26,3 +26,10 @@ CREATE TABLE author (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   name VARCHAR(128) NOT NULL
 );
+
+-- Insert authors to the author table
+INSERT INTO author (name) VALUES ('Linc Tomsu');
+INSERT INTO author (name) VALUES ('Etti Pixton');
+INSERT INTO author (name) VALUES ('Zuzana Dixey');
+INSERT INTO author (name) VALUES ('Clevie Boyen');
+INSERT INTO author (name) VALUES ('Forest Ramsdale');
