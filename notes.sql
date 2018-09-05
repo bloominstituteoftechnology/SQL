@@ -37,7 +37,7 @@ INSERT INTO note (title, content, author_id) VALUES ('ENoteTitle', 'ENoteContent
 INSERT INTO note (title, content, author_id) VALUES ('AANoteTitle', 'AANoteContent', 1);
 
 /*Select All notes by author name*/
-SELECT note.title as Title, note.content as Content from note, author WHERE author.id = note.author_id and author.id = 1;
+SELECT note.title as Title, note.content as Content from note, author WHERE author.id = note.author_id and author.name = 'AF';
 
 /*Select author by note.id*/
 SELECT author.first_name, author.last_name from author, note WHERE note.id = 1 AND author.id = note.author_id;
@@ -46,7 +46,7 @@ SELECT author.first_name, author.last_name from author, note WHERE note.id = 1 A
 SELECT first_name, last_name, COUNT(*) FROM author, note WHERE author.id = note.author_id GROUP BY author.id;
 
 /*Delete Authors from the author table*/
- DELETE FROM author WHERE id=1;
+DELETE FROM author WHERE id=1;
 
 /*What happens whtn you try to delete an author with an existing note?*/
 Error: FOREIGN KEY constraint failed
@@ -54,3 +54,11 @@ Error: FOREIGN KEY constraint failed
 
 /*How can you prevent this?*/
 PRAGMA foreign_keys = OFF; to turn off protection
+
+You can also delete notes associated with author first and then author - You should implement it as a transaction
+begin transaction;
+delete from notes where author_id is 1;
+delete from author where id is 1;
+commit;
+
+You can also apply cascade to foreign key: author_id INT REFERENCES author(id) ON DELETE CASCADE
