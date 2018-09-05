@@ -82,24 +82,39 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+    > SELECT * FROM albums;
+
   * Show all albums made between 1975 and 1990.
+    > SELECT * FROM album WHERE release_year>1975 AND release_year<1990;
+
   * Show all albums whose names start with `Super D`.
+    > SELECT * FROM album WHERE title LIKE '%Super D%';
+
   * Show all albums that have no release year.
+    > SELECT * FROM album WHERE release_year IS NULL;
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+    > SELECT track.title FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
+
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
+    > SELECT track.title as "Track_Title" FROM track, album WHERE track.album_id = album.id AND album.title = "Super Funky Album";
 
   * Select all album titles by `Han Solo`.
+    > SELECT album.title FROM album, artist, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = "Han Solo";
 
   * Select the average year all albums were released.
+    > SELECT AVG(release_year) FROM album;
 
   * Select the average year all albums by `Leia and the Ewoks` were released.
+    > SELECT AVG(release_year) FROM album, artist, artist_album WHERE artist_album.artist_id = artist.id AND artist_album.album_id = album.id AND artist.name = "Leia and the Ewoks";
 
   * Select the number of artists.
+    > SELECT COUNT(*) FROM artist;
 
   * Select the number of tracks on `Super Dubstep Album`.
+    > SELECT COUNT(*) FROM track, album WHERE track.album_id = album.id AND album.title = "Super Dubstep Album";
 
 ### Exercises, Day 2
 
@@ -120,17 +135,25 @@ Write queries that:
 * Insert notes to the note table.
 
 * Select all notes by an author's name.
+  > SELECT * FROM note, author WHERE note.author_id = author.id AND author.name = "Braden";
 
 * Select author for a particular note by note ID.
+  > SELECT author.name FROM author, note WHERE note.author_id = author.id AND note.id = 1;
 
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+  > SELECT COUNT(*), name FROM note, author WHERE note.author_id = author.id GROUP BY author_id;
 
 * Delete authors from the author table.
+  >> DELETE FROM author WHERE author.name = "Braden";
+
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+  > `Error: FOREIGN KEY constraint failed`
+
   * How can you prevent this?
+  > Add `ON DELETE CASCADE` to the end of the author_id reference in the note table
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
