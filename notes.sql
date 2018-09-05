@@ -65,3 +65,9 @@ SELECT note.title, note.content, note.date_modified
 SELECT DISTINCT author.name
   FROM author, note
   WHERE author.id = note.author AND note.id = 2;
+
+-- Select names of all authors along with the number of notes they each have
+SELECT author.name, COUNT(note.author) AS number_of_notes
+  FROM author, note
+  WHERE author.id = note.author
+  GROUP BY author.name;
