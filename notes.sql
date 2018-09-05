@@ -55,3 +55,8 @@ INSERT INTO note (author, title, content) VALUES (4, 'Sagittis sapien cum sociis
 INSERT INTO note (author, title, content) VALUES (5, 'Aliquam augue quam sollicitudin vitae consectetuer', 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.');
 INSERT INTO note (author, title, content) VALUES (5, 'At diam nam tristique tortor eu pede', 'Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.');
 INSERT INTO note (author, title, content) VALUES (5, 'Vel pede morbi porttitor lorem id ligula', 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.');
+
+-- Select all notes by an author's name
+SELECT note.title, note.content, note.date_modified
+  FROM note, author
+  WHERE note.author = author.id AND author.name = 'Clevie Boyen';
