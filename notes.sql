@@ -60,3 +60,8 @@ INSERT INTO note (author, title, content) VALUES (5, 'Vel pede morbi porttitor l
 SELECT note.title, note.content, note.date_modified
   FROM note, author
   WHERE note.author = author.id AND author.name = 'Clevie Boyen';
+
+-- Select author for a particular note by note ID
+SELECT DISTINCT author.name
+  FROM author, note
+  WHERE author.id = note.author AND note.id = 2;
