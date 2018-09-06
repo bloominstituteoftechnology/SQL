@@ -33,7 +33,6 @@ InSERT INTO notes (title, content, authors_id) VALUES ('Title 5', 'Content 5', 1
 
 SELECT title, content FROM notes, authors WHERE authors.id = notes.authors_id AND authors.first_name = 'Edward';
 
-
 /* Select author for a particular note by note ID. */ 
 
 SELECT first_name, last_name FROM (SELECT notes.id as notes_id, authors.first_name, authors.last_name FROM authors, notes WHERE notes.authors_id = authors.id) WHERE notes_id = 3;
