@@ -9,10 +9,17 @@ CREATE TABLE artist (
     name VARCHAR(128) NOT NULL
 );
 
-REATE TABLE track (
+CREATE TABLE track (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(128) NOT NULL,
     album_id INTEGER NOT NULL,
+    FOREIGN KEY(album_id) REFERENCES album(id)
+);
+
+CREATE TABLE artist_album (
+    artist_id INTEGER,
+    album_id INTEGER,
+    FOREIGN KEY(artist_id) REFERENCES artist(id),
     FOREIGN KEY(album_id) REFERENCES album(id)
 );
 
