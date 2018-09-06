@@ -135,3 +135,4 @@ Write queries that:
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
 
+** Initial commit 

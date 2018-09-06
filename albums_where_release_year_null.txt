@@ -1,0 +1,8 @@
+id          title              release_year
+----------  -----------------  ------------
+2           Super Funky Album              
+5           Super Dubstep Alb              
+7           Super Funky Album              
+10          Super Dubstep Alb              
+12          Super Funky Album              
+15          Super Dubstep Alb              
