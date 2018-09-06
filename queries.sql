@@ -36,3 +36,23 @@ SELECT COUNT(*)
 SELECT COUNT(track.id)
     FROM track, album
     WHERE album.id = track.album_id AND album.title = 'Super Dubstep Album';
+
+SELECT note.title, note.content
+    FROM note, author
+    WHERE note.author_id = author.id AND
+    author.name = "Some Guy";
+
+SELECT author.name
+    FROM note, author
+    WHERE note.author_id = author.id AND
+    note.id = 3;
+
+SELECT author.name, COUNT(*)
+    FROM note, author
+    WHERE note.author_id = author.id
+    GROUP BY author_id;
+
+INSERT INTO author (name) VALUES ("My Only Purpose Is To Be Deleted");
+
+DELETE FROM author
+WHERE name='My Only Purpose Is To Be Deleted';
