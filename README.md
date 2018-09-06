@@ -112,31 +112,44 @@ column names in the following tables. We'll use `setup.sql` later.
 Create a database for taking notes.
 
 * What are the columns that a note table needs?
+    1. note id
+    2. title
+    3. body
+    4. author id reference
+    5. timestamp
 
 * If you have a timestamp field, how do you auto-populate it with the date?
+
+  `Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP`
 
 * A note should have a foreign key pointing to an author in an author table.
 
 * What columns are needed for the author table?
 
+    1. author id
+    2. name
+
 Write queries that:
 
 * Insert authors to the author table.
-
+    in: `notes.sql`
 * Insert notes to the note table.
-
+    in: `notes.sql`
 * Select all notes by an author's name.
-
+    `SELECT note.id, note.title FROM author, note WHERE note.author_id IS author.id AND author.name IS 'Proust';`
 * Select author for a particular note by note ID.
-
+    `SELECT author.name FROM author, note WHERE note.author_id IS author.id AND note.id IS 2;`
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+    `SELECT author.name, COUNT(note.id) FROM author, note WHERE note.author_id IS author.id GROUP BY author.name;`
 
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+      FOREIGN KEY constraint failed
   * How can you prevent this?
+      Use `ON DELETE CASCADE`, which deletes all related records with the matching foreign key.
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
