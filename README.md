@@ -97,14 +97,15 @@ column names in the following tables. We'll use `setup.sql` later.
     the output.
     `SELECT track.title AS Track_Title FROM track JOIN album ON album.id = track.album_id WHERE album.title IS 'Super Funky Album';`
   * Select all album titles by `Han Solo`.
-    
+    `SELECT album.title FROM album, artist, artist_album WHERE artist.name IS 'Han Solo' AND artist.id IS artist_album.artist_id AND album.id IS artist_album.album_id;`
   * Select the average year all albums were released.
-
+    `SELECT AVG(release_year) FROM album;`
   * Select the average year all albums by `Leia and the Ewoks` were released.
-
+    `SELECT AVG(release_year) FROM album, artist, artist_album WHERE artist.name IS 'Leia and the Ewoks' AND artist.id IS artist_album.artist_id AND album.id IS artist_album.album_id;`
   * Select the number of artists.
-
+    `SELECT COUNT(id) FROM artist;`
   * Select the number of tracks on `Super Dubstep Album`.
+    `SELECT COUNT(track.title) FROM album, track WHERE album.id IS track.album_id AND album.title IS 'Super Dubstep Album';`
 
 ### Exercises, Day 2
 
