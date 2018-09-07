@@ -1,4 +1,4 @@
-# SQL
+# SQL 
 
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
@@ -82,55 +82,74 @@ column names in the following tables. We'll use `setup.sql` later.
 
 * Write SQL `SELECT` queries that:
   * Show all albums.
+   `SELECT * FROM album;`
   * Show all albums made between 1975 and 1990.
+   `SELECT * FROM album WHERE release_year BETWEEN 1975 AND 1990;`
   * Show all albums whose names start with `Super D`.
+   `SELECT * FROM album WHERE title LIKE 'Super D%';`
   * Show all albums that have no release year.
+   `SELECT * FROM album WHERE release_year is NULL;`
 
 * Write SQL `SELECT` queries that:
   * Show all track titles from `Super Funky Album`.
+   `SELECT track.title FROM track JOIN album ON album.id = track.album_id WHERE album.title IS 'Super Funky Album';`
   * Same query as above, but rename the column from `title` to `Track_Title` in
     the output.
-
+    `SELECT track.title AS Track_Title FROM track JOIN album ON album.id = track.album_id WHERE album.title IS 'Super Funky Album';`
   * Select all album titles by `Han Solo`.
-
+    `SELECT album.title FROM album, artist, artist_album WHERE artist.name IS 'Han Solo' AND artist.id IS artist_album.artist_id AND album.id IS artist_album.album_id;`
   * Select the average year all albums were released.
-
+    `SELECT AVG(release_year) FROM album;`
   * Select the average year all albums by `Leia and the Ewoks` were released.
-
+    `SELECT AVG(release_year) FROM album, artist, artist_album WHERE artist.name IS 'Leia and the Ewoks' AND artist.id IS artist_album.artist_id AND album.id IS artist_album.album_id;`
   * Select the number of artists.
-
+    `SELECT COUNT(id) FROM artist;`
   * Select the number of tracks on `Super Dubstep Album`.
+    `SELECT COUNT(track.title) FROM album, track WHERE album.id IS track.album_id AND album.title IS 'Super Dubstep Album';`
 
 ### Exercises, Day 2
 
 Create a database for taking notes.
 
 * What are the columns that a note table needs?
+    1. note id
+    2. title
+    3. body
+    4. author id reference
+    5. timestamp
 
 * If you have a timestamp field, how do you auto-populate it with the date?
+
+  `Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP`
 
 * A note should have a foreign key pointing to an author in an author table.
 
 * What columns are needed for the author table?
 
+    1. author id
+    2. name
+
 Write queries that:
 
 * Insert authors to the author table.
-
+    in: `notes.sql`
 * Insert notes to the note table.
-
+    in: `notes.sql`
 * Select all notes by an author's name.
-
+    `SELECT note.id, note.title FROM author, note WHERE note.author_id IS author.id AND author.name IS 'Proust';`
 * Select author for a particular note by note ID.
-
+    `SELECT author.name FROM author, note WHERE note.author_id IS author.id AND note.id IS 2;`
 * Select the names of all the authors along with the number of notes they each have. (Hint: `GROUP BY`.)
+    `SELECT author.name, COUNT(note.id) FROM author, note WHERE note.author_id IS author.id GROUP BY author.name;`
 
 * Delete authors from the author table.
   > Note that SQLite doesn't enforce foreign key constrains by default. You have
   > to enable them by running `PRAGMA foreign_keys = ON;` before your queries.
   
   * What happens when you try to delete an author with an existing note?
+      FOREIGN KEY constraint failed
   * How can you prevent this?
+      Use `ON DELETE CASCADE`, which deletes all related records with the matching foreign key.
 
 Submit a file `notes.sql` with the queries that build (`CREATE TABLE`/`INSERT`)
 and query the database as noted above.
