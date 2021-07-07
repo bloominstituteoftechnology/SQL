@@ -1,12 +1,13 @@
 # SQL
 
+
 See [the Lambda page on Relational
 Databases](https://github.com/LambdaSchool/Relational-Databases) for more
 information. (Note that page is for PostgreSQL, but the SQL information is valid
 here.)
 
 ## SQLite
-
+sql
 SQLite is a popular, simple SQL database.
 
 You can launch into a memory-only DB by running:
